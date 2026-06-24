@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sclérothérapie &amp; techniques endoveineuses — Fiches &amp; QCM · DU de Phlébologie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Libre+Franklin:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#EBEFF4;
+    --surface:#FFFFFF;
+    --surface-2:#F5F8FB;
+    --ink:#12233E;
+    --ink-2:#4B5B73;
+    --ink-3:#7A879B;
+    --vein:#1C3F73;
+    --vein-2:#2E73C2;
+    --vein-wash:#E7EFF9;
+    --artery:#B33122;
+    --artery-wash:#FAE9E6;
+    --ok:#1B7A52;
+    --ok-wash:#E5F2EC;
+    --amber:#9A6A12;
+    --amber-wash:#FAF0DC;
+    --line:#D4DCE6;
+    --line-2:#C2CCD9;
+    --shadow:0 1px 2px rgba(18,35,62,.05),0 8px 24px rgba(18,35,62,.06);
+    --shadow-lg:0 4px 12px rgba(18,35,62,.08),0 18px 48px rgba(18,35,62,.10);
+    --serif:"Newsreader",Georgia,serif;
+    --sans:"Libre Franklin",system-ui,-apple-system,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,monospace;
+    --r:14px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:var(--sans);font-size:16px;line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--vein-2);}
+  ::selection{background:var(--vein-wash);}
+
+  /* ---------- HEADER ---------- */
+  .topbar{
+    position:sticky;top:0;z-index:50;
+    background:rgba(235,239,244,.86);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar-inner{
+    max-width:1180px;margin:0 auto;padding:14px 22px;
+    display:flex;align-items:center;gap:20px;flex-wrap:wrap;
+  }
+  .brand{display:flex;align-items:center;gap:13px;min-width:0;}
+  .brand-mark{
+    flex:0 0 auto;width:38px;height:38px;border-radius:10px;
+    background:linear-gradient(150deg,var(--vein),var(--vein-2));
+    display:grid;place-items:center;box-shadow:var(--shadow);
+  }
+  .brand-mark svg{display:block;}
+  .brand-txt h1{
+    font-family:var(--serif);font-weight:600;font-size:1.18rem;
+    margin:0;line-height:1.1;letter-spacing:-.01em;
+  }
+  .brand-txt p{
+    margin:1px 0 0;font-size:.72rem;letter-spacing:.13em;
+    text-transform:uppercase;color:var(--ink-3);font-weight:600;
+  }
+  .modeswitch{
+    margin-left:auto;display:flex;gap:4px;background:var(--surface);
+    border:1px solid var(--line);border-radius:11px;padding:4px;box-shadow:var(--shadow);
+  }
+  .modeswitch button{
+    font-family:var(--sans);font-weight:600;font-size:.86rem;
+    border:0;background:transparent;color:var(--ink-2);cursor:pointer;
+    padding:8px 16px;border-radius:8px;transition:.18s;white-space:nowrap;
+  }
+  .modeswitch button:hover{color:var(--ink);}
+  .modeswitch button[aria-selected="true"]{
+    background:var(--vein);color:#fff;box-shadow:0 1px 4px rgba(28,63,115,.35);
+  }
+
+  /* ---------- LAYOUT ---------- */
+  main{max-width:1180px;margin:0 auto;padding:0 22px;}
+  .view{display:none;}
+  .view.active{display:block;animation:fade .3s ease;}
+  @keyframes fade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+
+  /* ---------- INTRO / HERO ---------- */
+  .hero{padding:40px 0 14px;}
+  .hero .kicker{
+    font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--vein-2);font-weight:600;margin-bottom:10px;
+  }
+  .hero h2{
+    font-family:var(--serif);font-weight:500;font-size:clamp(1.7rem,4vw,2.6rem);
+    line-height:1.08;letter-spacing:-.018em;margin:0 0 12px;max-width:22ch;
+  }
+  .hero h2 em{font-style:italic;color:var(--vein);}
+  .hero p.lede{
+    max-width:62ch;color:var(--ink-2);font-size:1.04rem;margin:0;
+  }
+  .vein-rule{margin:24px 0 0;height:18px;width:100%;color:var(--line-2);}
+  .vein-rule svg{width:100%;height:100%;display:block;}
+
+  /* ---------- FICHES LAYout ---------- */
+  .fiche-wrap{display:grid;grid-template-columns:236px 1fr;gap:34px;padding:26px 0 70px;align-items:start;}
+  .index{position:sticky;top:84px;}
+  .index-h{
+    font-family:var(--mono);font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;
+    color:var(--ink-3);font-weight:600;margin:0 0 10px 12px;
+  }
+  .index ol{list-style:none;margin:0;padding:0;counter-reset:idx;}
+  .index li{counter-increment:idx;}
+  .index a{
+    display:flex;gap:9px;align-items:baseline;text-decoration:none;color:var(--ink-2);
+    font-size:.86rem;font-weight:500;line-height:1.3;padding:7px 12px;border-radius:9px;
+    border-left:2px solid transparent;transition:.15s;
+  }
+  .index a::before{
+    content:counter(idx,decimal-leading-zero);font-family:var(--mono);font-size:.7rem;
+    color:var(--ink-3);font-weight:600;flex:0 0 auto;
+  }
+  .index a:hover{background:var(--surface);color:var(--ink);}
+  .index a.active{background:var(--vein-wash);color:var(--vein);border-left-color:var(--vein);}
+  .index a.active::before{color:var(--vein-2);}
+  .index li.index-chapter{
+    counter-increment:none;list-style:none;width:100%;
+    font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--ink-3);font-weight:600;margin:16px 0 6px;padding:0 12px;
+  }
+  .index li.index-chapter:first-child{margin-top:2px;}
+
+  .chapter-head{margin:6px 0 22px;padding-bottom:12px;border-bottom:2px solid var(--line-2);}
+  .fiche + .chapter-head{margin-top:24px;}
+  .chapter-head .ch-kick{
+    font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--vein-2);font-weight:600;
+  }
+  .chapter-head .ch-ttl{
+    font-family:var(--serif);font-weight:600;font-size:1.65rem;line-height:1.1;
+    letter-spacing:-.012em;color:var(--ink);margin-top:4px;
+  }
+
+  .fiche-col{min-width:0;}
+  .fiche{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+    box-shadow:var(--shadow);padding:30px 34px 32px;margin-bottom:24px;scroll-margin-top:84px;
+  }
+  .fiche-eyebrow{
+    display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:.72rem;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--vein-2);font-weight:600;margin-bottom:8px;
+  }
+  .fiche-eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--vein-2);}
+  .fiche h3{
+    font-family:var(--serif);font-weight:600;font-size:1.55rem;line-height:1.12;
+    letter-spacing:-.012em;margin:0 0 18px;
+  }
+  .fiche h4{
+    font-family:var(--sans);font-weight:700;font-size:.98rem;color:var(--vein);
+    margin:24px 0 8px;letter-spacing:.005em;
+  }
+  .fiche h4:first-of-type{margin-top:4px;}
+  .fiche p{margin:0 0 12px;}
+  .fiche ul{margin:4px 0 14px;padding-left:0;list-style:none;}
+  .fiche ul li{position:relative;padding-left:20px;margin-bottom:6px;}
+  .fiche ul li::before{
+    content:"";position:absolute;left:3px;top:.62em;width:6px;height:6px;border-radius:1px;
+    background:var(--vein-2);transform:rotate(45deg);
+  }
+  .fiche ul ul{margin:6px 0 6px;}
+  .fiche ul ul li::before{background:var(--line-2);}
+  .fiche strong{color:var(--ink);font-weight:700;}
+  .src{font-family:var(--mono);font-size:.78em;color:var(--ink-3);}
+
+  /* keystats */
+  .stats{display:flex;flex-wrap:wrap;gap:12px;margin:6px 0 18px;}
+  .stat{
+    flex:1 1 130px;background:var(--surface-2);border:1px solid var(--line);
+    border-radius:11px;padding:13px 15px;
+  }
+  .stat .num{font-family:var(--serif);font-weight:600;font-size:1.7rem;line-height:1;color:var(--vein);}
+  .stat .lab{font-size:.78rem;color:var(--ink-2);margin-top:5px;line-height:1.3;}
+
+  /* note boxes */
+  .note{border-radius:11px;padding:14px 16px 14px 16px;margin:14px 0;border:1px solid;font-size:.95rem;}
+  .note p{margin:0 0 8px;}
+  .note p:last-child{margin-bottom:0;}
+  .note ul{margin:6px 0 0;}
+  .note .ttl{font-weight:700;display:flex;align-items:center;gap:8px;margin-bottom:8px;font-size:.86rem;letter-spacing:.02em;text-transform:uppercase;}
+  .note--danger{background:var(--artery-wash);border-color:#E8C2BB;}
+  .note--danger .ttl{color:var(--artery);}
+  .note--danger li::before{background:var(--artery);}
+  .note--warn{background:var(--amber-wash);border-color:#E8D6A8;}
+  .note--warn .ttl{color:var(--amber);}
+  .note--warn li::before{background:var(--amber);}
+  .note--ok{background:var(--ok-wash);border-color:#BFE0CD;}
+  .note--ok .ttl{color:var(--ok);}
+  .note--ok li::before{background:var(--ok);}
+  .note--info{background:var(--vein-wash);border-color:#C6DAF1;}
+  .note--info .ttl{color:var(--vein);}
+  .note--info li::before{background:var(--vein-2);}
+
+  /* table */
+  .tbl{width:100%;border-collapse:collapse;margin:8px 0 16px;font-size:.9rem;}
+  .tbl th,.tbl td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top;}
+  .tbl thead th{
+    font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--ink-2);font-weight:600;background:var(--surface-2);
+  }
+  .tbl tbody tr:last-child td{border-bottom:0;}
+  .tbl .grp{font-weight:700;color:var(--ink);}
+  .tag-abs{color:var(--artery);font-weight:700;}
+  .tag-rel{color:var(--amber);font-weight:700;}
+
+  /* ---------- QCM ---------- */
+  .qcm-head{padding:30px 0 6px;}
+  .qcm-toolbar{
+    display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+    box-shadow:var(--shadow);padding:16px 18px;margin-bottom:8px;
+  }
+  .filters{display:flex;flex-wrap:wrap;gap:7px;}
+  .filters button{
+    font-family:var(--sans);font-size:.8rem;font-weight:600;cursor:pointer;
+    border:1px solid var(--line-2);background:var(--surface);color:var(--ink-2);
+    padding:6px 12px;border-radius:20px;transition:.15s;
+  }
+  .filters button:hover{border-color:var(--vein-2);color:var(--vein);}
+  .filters button[aria-pressed="true"]{background:var(--vein);border-color:var(--vein);color:#fff;}
+  .scorebox{display:flex;align-items:center;gap:14px;}
+  .scorebox .meter{
+    font-family:var(--mono);font-weight:600;font-size:.92rem;color:var(--ink-2);
+    background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:8px 14px;white-space:nowrap;
+  }
+  .scorebox .meter b{color:var(--vein);}
+  .qhint{font-size:.84rem;color:var(--ink-3);margin:0 2px 18px;}
+
+  .q{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+    box-shadow:var(--shadow);padding:22px 24px;margin-bottom:18px;
+  }
+  .q-top{display:flex;gap:13px;align-items:baseline;margin-bottom:14px;}
+  .q-num{
+    font-family:var(--mono);font-weight:600;font-size:.78rem;color:#fff;background:var(--vein);
+    border-radius:7px;padding:3px 8px;flex:0 0 auto;
+  }
+  .q-theme{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);font-weight:600;}
+  .q-text{font-family:var(--sans);font-weight:600;font-size:1.04rem;line-height:1.4;margin:0 0 14px;color:var(--ink);}
+  .opts{display:flex;flex-direction:column;gap:8px;}
+  .opt{
+    display:flex;gap:12px;align-items:flex-start;cursor:pointer;
+    border:1px solid var(--line);border-radius:10px;padding:11px 14px;transition:.13s;background:var(--surface);
+  }
+  .opt:hover{border-color:var(--vein-2);background:var(--surface-2);}
+  .opt .box{
+    flex:0 0 auto;width:21px;height:21px;border:2px solid var(--line-2);border-radius:6px;
+    display:grid;place-items:center;margin-top:1px;transition:.13s;font-family:var(--mono);font-size:.72rem;font-weight:700;color:transparent;
+  }
+  .opt .letter{font-family:var(--mono);font-weight:600;color:var(--ink-3);flex:0 0 auto;}
+  .opt .otxt{flex:1;}
+  .opt.sel .box{background:var(--vein);border-color:var(--vein);color:#fff;}
+  .opt.sel .box::after{content:"✓";}
+  .opt.sel{border-color:var(--vein);background:var(--vein-wash);}
+  /* graded states */
+  .q.graded .opt{cursor:default;}
+  .q.graded .opt:hover{background:var(--surface);}
+  .opt.correct{border-color:var(--ok);background:var(--ok-wash);}
+  .opt.correct .box{background:var(--ok);border-color:var(--ok);color:#fff;}
+  .opt.correct .box::after{content:"✓";}
+  .opt.correct .letter{color:var(--ok);}
+  .opt.missed{border-color:var(--ok);background:var(--ok-wash);}
+  .opt.missed .box{border-color:var(--ok);color:var(--ok);}
+  .opt.missed .box::after{content:"✓";}
+  .opt.wrong{border-color:var(--artery);background:var(--artery-wash);}
+  .opt.wrong .box{background:var(--artery);border-color:var(--artery);color:#fff;}
+  .opt.wrong .box::after{content:"✕";}
+  .opt.wrong .letter{color:var(--artery);}
+  .opt .verdict{font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;font-weight:600;align-self:center;margin-left:auto;}
+  .opt.correct .verdict,.opt.missed .verdict{color:var(--ok);}
+  .opt.wrong .verdict{color:var(--artery);}
+
+  .explain{
+    margin-top:14px;border-radius:10px;padding:13px 15px;font-size:.92rem;
+    background:var(--surface-2);border:1px solid var(--line);display:none;
+  }
+  .q.graded .explain{display:block;}
+  .explain .tag{
+    font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;
+    display:inline-block;margin-bottom:5px;
+  }
+  .explain.good{border-color:#BFE0CD;background:var(--ok-wash);}
+  .explain.good .tag{color:var(--ok);}
+  .explain.bad{border-color:#E8C2BB;background:var(--artery-wash);}
+  .explain.bad .tag{color:var(--artery);}
+  .explain p{margin:0;color:var(--ink);}
+
+  .qcm-actions{
+    position:sticky;bottom:18px;display:flex;gap:12px;justify-content:center;
+    margin:24px 0 60px;flex-wrap:wrap;
+  }
+  .btn{
+    font-family:var(--sans);font-weight:600;font-size:.95rem;cursor:pointer;border-radius:11px;
+    padding:13px 26px;border:1px solid transparent;transition:.15s;box-shadow:var(--shadow-lg);
+  }
+  .btn-primary{background:var(--vein);color:#fff;}
+  .btn-primary:hover{background:#163459;}
+  .btn-ghost{background:var(--surface);color:var(--ink);border-color:var(--line-2);}
+  .btn-ghost:hover{border-color:var(--vein-2);color:var(--vein);}
+
+  .result-banner{
+    background:linear-gradient(135deg,var(--vein),var(--vein-2));color:#fff;
+    border-radius:var(--r);padding:22px 26px;margin-bottom:20px;display:none;box-shadow:var(--shadow-lg);
+  }
+  .result-banner.show{display:block;animation:fade .3s ease;}
+  .result-banner .big{font-family:var(--serif);font-weight:600;font-size:2rem;line-height:1;}
+  .result-banner .sub{opacity:.9;margin-top:6px;font-size:.95rem;}
+
+  footer{
+    border-top:1px solid var(--line);padding:26px 22px 40px;text-align:center;
+    color:var(--ink-3);font-size:.82rem;max-width:1180px;margin:0 auto;
+  }
+  footer .src{display:block;margin-top:8px;}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:860px){
+    .fiche-wrap{grid-template-columns:1fr;}
+    .index{position:relative;top:0;margin-bottom:6px;}
+    .index ol{display:flex;flex-wrap:wrap;gap:6px;}
+    .index-h{margin-left:2px;}
+    .index a{border-left:0;border:1px solid var(--line);background:var(--surface);}
+    .index a.active{border-color:var(--vein);}
+    .fiche{padding:24px 20px 26px;}
+    .qcm-toolbar{flex-direction:column;align-items:stretch;}
+    .scorebox{justify-content:space-between;}
+  }
+  @media (max-width:520px){
+    main,.topbar-inner{padding-left:15px;padding-right:15px;}
+    .q{padding:18px 16px;}
+    .opt .verdict{display:none;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;scroll-behavior:auto!important;transition:none!important;}
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <path d="M5 3c0 5 6 5 6 9s-6 4-6 9" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+          <path d="M19 3c0 5-6 5-6 9s6 4 6 9" stroke="#9DC3F0" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <div class="brand-txt">
+        <h1>Sclérothérapie &amp; techniques endoveineuses</h1>
+        <p>DU de Phlébologie · Révisions</p>
+      </div>
+    </div>
+    <div class="modeswitch" role="tablist" aria-label="Mode d'étude">
+      <button id="tab-fiches" role="tab" aria-selected="true" aria-controls="view-fiches">Fiches de révision</button>
+      <button id="tab-qcm" role="tab" aria-selected="false" aria-controls="view-qcm">QCM d'entraînement</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- ============ FICHES ============ -->
+  <section id="view-fiches" class="view active" role="tabpanel" aria-labelledby="tab-fiches">
+    <div class="hero">
+      <div class="kicker">Synthèse d'après 13 supports de cours</div>
+      <h2>Tout ce qu'il faut retenir sur les <em>complications de la sclérothérapie</em> et les <em>techniques endoveineuses</em>.</h2>
+      <p class="lede">Dix-sept fiches réparties en deux chapitres. <strong>Chapitre 1 — Sclérothérapie :</strong> effets indésirables (généraux, cutanés, thrombo-emboliques, neurologiques), cadre déontologique, ablation pharmaco-mécanique, profil des sclérosants. <strong>Chapitre 2 — Techniques endoveineuses :</strong> désobstruction veineuse à la phase aiguë, syndrome post-thrombotique et recanalisation veineuse chronique, bilan d'imagerie et filtres caves ; ablation thermique (laser, radiofréquence), phlébectomie ambulatoire et complications des traitements thermiques. Les chiffres et recommandations sont repris des supports fournis.</p>
+      <div class="vein-rule" aria-hidden="true">
+        <svg viewBox="0 0 1000 18" preserveAspectRatio="none"><path d="M0 9 Q40 0 80 9 T160 9 T240 9 T320 9 T400 9 T480 9 T560 9 T640 9 T720 9 T800 9 T880 9 T960 9 T1040 9" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+      </div>
+    </div>
+
+    <div class="fiche-wrap">
+      <nav class="index" aria-label="Sommaire des fiches">
+        <p class="index-h">Sommaire</p>
+        <ol id="fiche-index">
+          <li class="index-chapter">Chap. 1 · Sclérothérapie</li>
+          <li><a href="#f1">Fréquences &amp; nomenclature</a></li>
+          <li><a href="#f2">Complications liées au produit</a></li>
+          <li><a href="#f3">Complications techniques</a></li>
+          <li><a href="#f4">Complications cutanées</a></li>
+          <li><a href="#f5">Thrombo-emboliques</a></li>
+          <li><a href="#f6">Neurologiques</a></li>
+          <li><a href="#f7">Information &amp; déontologie</a></li>
+          <li><a href="#f8">Ablation pharmaco-mécanique</a></li>
+          <li><a href="#f9">Sclérosants &amp; pharmacovigilance</a></li>
+          <li class="index-chapter">Chap. 2 · Techniques endoveineuses</li>
+          <li><a href="#f10">Désobstruction à la phase aiguë</a></li>
+          <li><a href="#f11">SPT &amp; obstruction résiduelle</a></li>
+          <li><a href="#f12">Bilan &amp; imagerie de recanalisation</a></li>
+          <li><a href="#f13">Filtres caves</a></li>
+          <li><a href="#f14">Laser endoveineux (EVLA)</a></li>
+          <li><a href="#f15">Radiofréquence (ClosureFast)</a></li>
+          <li><a href="#f16">Complications des TTEV</a></li>
+          <li><a href="#f17">Phlébectomie ambulatoire</a></li>
+        </ol>
+      </nav>
+
+      <div class="fiche-col">
+
+        <div class="chapter-head">
+          <div class="ch-kick">Chapitre 1</div>
+          <div class="ch-ttl">Complications de la sclérothérapie</div>
+        </div>
+
+        <!-- FICHE 1 -->
+        <article id="f1" class="fiche">
+          <div class="fiche-eyebrow"><span class="dot"></span>Fiche 01 · Cadre général</div>
+          <h3>Fréquences des complications &amp; nomenclature européenne</h3>
+          <p>Les recommandations européennes (Rabe 2014, d'après Guex 2010) classent les complications par fréquence par séance, toutes molécules confondues.</p>
+
+          <h4>Échelle de fréquence (nomenclature européenne)</h4>
+          <table class="tbl">
+            <thead><tr><th>Catégorie</th><th>Fréquence (F)</th></tr></thead>
+            <tbody>
+              <tr><td class="grp">Very common</td><td class="src">F &gt; 10 %</td></tr>
+              <tr><td class="grp">Common</td><td class="src">1 % ≤ F &lt; 10 %</td></tr>
+              <tr><td class="grp">Uncommon</td><td class="src">0,1 % ≤ F &lt; 1 %</td></tr>
+              <tr><td class="grp">Rare</td><td class="src">0,01 % ≤ F &lt; 0,1 %</td></tr>
+              <tr><td class="grp">Very rare / cas isolés</td><td class="src">F &lt; 0,01 %</td></tr>
+            </tbody>
+          </table>
+
+          <h4>Liquide vs Mousse — différences clés à connaître</h4>
+          <ul>
+            <li><strong>Thrombophlébite superficielle :</strong> Common (liquide) → <strong>Very common (mousse)</strong>.</li>
+            <li><strong>Matting :</strong> Uncommon (liquide) → <strong>Common (mousse)</strong>.</li>
+            <li><strong>Pigmentation résiduelle :</strong> Uncommon (liquide) → <strong>Common (mousse)</strong>.</li>
+            <li><strong>Troubles visuels :</strong> Very rare (liquide) → <strong>Uncommon (mousse)</strong>.</li>
+            <li><strong>TVP (surtout musculaire/distale) :</strong> Very rare (liquide) → <strong>Uncommon (mousse)</strong>.</li>
+            <li><strong>Décès / anaphylaxie / EP :</strong> cas isolés quelle que soit la forme.</li>
+          </ul>
+          <p class="src">Réf. : European guidelines for sclerotherapy, Rabe E, Phlebology 2014 ; Guex 2010.</p>
+        </article>
+
+        <!-- FICHE 2 -->
+        <article id="f2" class="fiche">
+          <div class="fiche-eyebrow"><span class="dot"></span>Fiche 02 · Produit</div>
+          <h3>Complications liées au produit</h3>
+
+          <h4>Allergie — anaphylaxie</h4>
+          <p>Le choc anaphylactique reste rapporté à l'état de <strong>cas isolés</strong>, inhérents à tout traitement médicamenteux.</p>
+          <ul>
+            <li>Repérer un <strong>terrain allergique</strong>, un incident lors d'une sclérose antérieure, une autre allergie (médicamenteuse, latex, anesthésique, « sparadrap »).</li>
+            <li>Facteurs aggravant une anaphylaxie : <strong>grossesse</strong>, <strong>bétabloqueurs</strong>.</li>
+          </ul>
+          <div class="note note--warn">
+            <div class="ttl">Nota bene</div>
+            <p>Un test cutané <strong>ne protège pas</strong> réellement : l'allergie survient après un premier contact.</p>
+          </div>
+
+          <h4>Toxicité myocardique supposée du polidocanol</h4>
+          <ul>
+            <li>Base nationale de pharmacovigilance, 2007–2017 : <strong>4 décès</strong> après injection de polidocanol.</li>
+            <li>Dont <strong>2 nourrissons</strong> (volumes importants) et <strong>2 décès après mousse 1–2 %, volume &lt; 10 ml</strong> (sur ≈ 1,4 million de scléroses/an) qui posent question.</li>
+            <li>Pathogénie et imputabilité <strong>non élucidées</strong> ; réunion ANSM janvier 2018.</li>
+            <li>Propositions des sociétés savantes : former aux bonnes pratiques et à l'urgence, améliorer la déclaration des EIG.</li>
+          </ul>
+          <p class="src">À relier à l'activité inotrope négative du polidocanol (fiche 09).</p>
+        </article>
+
+        <!-- FICHE 3 -->
+        <article id="f3" class="fiche">
+          <div class="fiche-eyebrow"><span class="dot"></span>Fiche 03 · Technique</div>
+          <h3>Complications liées à un défaut technique</h3>
+
+          <h4>Injection intra-artérielle</h4>
+          <div class="note note--danger">
+            <div class="ttl">Urgence rare mais dramatique</div>
+            <ul>
+              <li><strong>Cas isolés</strong>, quasiment disparus depuis l'échoguidage.</li>
+              <li>Conséquence possiblement dramatique : <strong>&gt; 50 % d'amputation</strong>.</li>
+              <li>Zones à risque : cheville, pointe du mollet, creux poplité, pli inguinal, <strong>perforantes</strong>.</li>
+              <li>Échoguidage <strong>requis dans ces zones depuis le rapport ANAES 2004</strong>.</li>
+            </ul>
+          </div>
+          <p><strong>Triple sécurité :</strong> échoguidage, contrôle du reflux, diffusion de la mousse. Les télangiectasies comportent des micro-shunts (zones à risque) ; les artérioles exposent à une nécrose étendue.</p>
+
+          <h4>Infection</h4>
+          <ul>
+            <li>Exceptionnelle — un seul cas d'endocardite décrit en France.</li>
+            <li>Effet <strong>antiseptique probable</strong> des sclérosants.</li>
+          </ul>
+        </article>
+
+        <!-- FICHE 4 -->
+        <article id="f4" class="fiche">
+          <div class="fiche-eyebrow"><span class="dot"></span>Fiche 04 · Peau</div>
+          <h3>Complications cutanées</h3>
+
+          <h4>Nécrose cutanée de petite taille</h4>
+          <p>Les nécroses sont <strong>rares</strong>. Causes possibles :</p>
+          <ul>
+            <li>Injection paravasculaire.</li>
+            <li>Passage du sclérosant dans les capillaires artériolaires par des micro-shunts (forte pression).</li>
+            <li>Rôle du vasospasme réflexe artério-veineux (gros volume).</li>
+          </ul>
+          <p>À partir de <strong>0,5 ml</strong>, une nécrose apparaît avec le liquide 1 % et la mousse 2 % (Schuller-Petrović : l'extravasation n'est <em>pas seule</em> responsable). Une injection paravasculaire de polidocanol <strong>fait mal</strong>.</p>
+          <div class="note note--info">
+            <div class="ttl">Problème de pression</div>
+            <p>Les seringues de petit diamètre augmentent le risque d'extravasation : insuline (1 cm³) ≈ <strong>&gt; 300 mmHg</strong> contre ≈ 180 mmHg pour une 2,5 cm³ (à force égale).</p>
+          </div>
+          <div class="note note--ok">
+            <div class="ttl">Bonne pratique / prise en charge</div>
+            <ul>
+              <li>Une injection qui fait mal n'est pas une bonne injection → <strong>STOP</strong>.</li>
+              <li>Pas de seringue à insuline, ne pas forcer le piston, <strong>0,1 à 0,5 ml</strong> par injection (douce).</li>
+              <li>Expliquer, accompagner, soulager ; se traite comme un petit ulcère.</li>
+            </ul>
+          </div>
+
+          <h4>Matting (télangiectasies secondaires)</h4>
+          <div class="stats">
+            <div class="stat"><div class="num">1–10 %</div><div class="lab">fréquence du matting</div></div>
+          </div>
+          <ul>
+            <li>Causes : occlusion de la varice « de drainage », veinule nourricière passée inaperçue, contexte hormonal, facteurs angiogéniques.</li>
+            <li>Évolution : rôle de l'information préalable, recherche et traitement d'une veinule nourricière, amélioration voire <strong>disparition spontanée en quelques mois</strong>, traitement local des néo-télangiectasies persistantes (sclérothérapie, laser).</li>
+          </ul>
+
+          <h4>Pigmentations</h4>
+          <div class="stats">
+            <div class="stat"><div class="num">7–30 %</div><div class="lab">médiane ≈ 17 %</div></div>
+          </div>
+          <ul>
+            <li>Causes : migration d'érythrocytes, dépôts intradermiques d'hémosidérine, mélanogénèse post-inflammatoire, mélanogénèse (UV, phototype Fitzpatrick).</li>
+            <li>Prévention : « faire le job » selon les règles, <strong>évacuation du coagulum endoluminal</strong>.</li>
+            <li>Traitement : formule de Kligman 5 % (hydroquinone, hydrocortisone, acide rétinoïque), topiques (Leucotidine B, Trio A), peeling TCA (dermatologue), laser (?).</li>
+          </ul>
+        </article>
+
+        <!-- FICHE 5 -->
+        <article id="f5" class="fiche">
+          <div class="fiche-eyebrow"><span class="dot"></span>Fiche 05 · Thrombose</div>
+          <h3>Complications thrombo-emboliques</h3>
+
+          <div class="stats">
+            <div class="stat"><div class="num">&lt; 1 %</div><div class="lab">incidence des TVP (majorité distales)</div></div>
+            <div class="stat"><div class="num">0,2 %</div><div class="lab">TVP symptomatiques (Guex 2005)</div></div>
+            <div class="stat"><div class="num">0,6 %</div><div class="lab">TVP toutes confondues (Jia 2007)</div></div>
+          </div>
+          <ul>
+            <li>La grande majorité des TVP sont <strong>distales</strong> et <strong>asymptomatiques</strong> (détectées par contrôle ED systématique).</li>
+            <li>La sclérothérapie est un acte <strong>peu thrombogène</strong> ; pas de modification des marqueurs biologiques après mousse (Hamel-Desnos 2011).</li>
+            <li>La prise en charge d'une TVP proximale occlusive après sclérothérapie <strong>ne diffère pas</strong> des recommandations habituelles ; recherche étiologique comme une TVP spontanée.</li>
+            <li>L'utilisation de <strong>gros volumes de mousse (&gt; 10 ml) augmente significativement le risque de TVP</strong> (Breu 2008, Myers 2008).</li>
+          </ul>
+
+          <h4>Identifier les sujets à risque</h4>
+          <p>Antécédents personnels ou familiaux de MTEV (+++), thrombophilie. Consensus Tegernsee 2006 : déficit en antithrombine, SAPL, déficit protéine C / S, anomalies combinées, formes homozygotes.</p>
+
+          <h4>Thrombophilies — conduite (Hamel-Desnos 2009)</h4>
+          <table class="tbl">
+            <thead><tr><th>Groupe</th><th>Exemples</th><th>Précautions</th></tr></thead>
+            <tbody>
+              <tr>
+                <td class="grp">Groupe 1<br><span class="tag-abs">RR très élevé</span></td>
+                <td>Déficit en antithrombine ; SAPL avéré (clinique + biologique)</td>
+                <td><span class="tag-abs">Contre-indication absolue</span></td>
+              </tr>
+              <tr>
+                <td class="grp">Groupe 2<br>RR élevé</td>
+                <td>Déficit protéine C / S, anomalies combinées, mutation facteur V ou II <em>homozygote</em></td>
+                <td>Si anticoagulé au long cours : sans HBPM. Sinon : <strong>HBPM 4000 UI (ou fondaparinux 2,5 mg) × 7 j</strong>, 1ʳᵉ injection le jour de la sclérose.</td>
+              </tr>
+              <tr>
+                <td class="grp">Groupe 3<br>RR modéré</td>
+                <td>Mutation facteur V ou II <em>hétérozygote</em>, hyperhomocystéinémie, SAPL asymptomatique, facteur VIII élevé</td>
+                <td>Selon contexte : une seule injection d'HBPM/fondaparinux le jour J, <strong>ou</strong> 7 jours.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h4>Recommandations européennes (2014)</h4>
+          <div class="note note--info">
+            <div class="ttl">Reco 9 — haut risque thrombo-embolique</div>
+            <ul>
+              <li>Thromboprophylaxie HBPM ou fondaparinux à dose prophylactique <strong>7 jours</strong> (GRADE 1C).</li>
+              <li>Associer prévention mécanique (compression, mobilisation) (GRADE 1C).</li>
+              <li>Éviter un volume de mousse important ; décision au cas par cas, réévaluation bénéfice/risque (GRADE 1C).</li>
+            </ul>
+          </div>
+          <div class="note note--warn">
+            <div class="ttl">Reco 15</div>
+            <p>Avant sclérothérapie, on <strong>déconseille</strong> la recherche biologique systématique de thrombophilie en routine (GRADE 1C).</p>
+          </div>
+          <p><strong>Saphène chez patient à haut risque thrombotique :</strong> préférer une <strong>ablation thermique</strong> en première intention si réalisable ; l'échosclérothérapie mousse reste possible selon le contexte, avec thromboprophylaxie adaptée (Hamel-Desnos &amp; Miserey 2018).</p>
+        </article>
+
+        <!-- FICHE 6 -->
+        <article id="f6" class="fiche">
+          <div class="fiche-eyebrow"><span class="dot"></span>Fiche 06 · Neuro</div>
+          <h3>Complications neurologiques</h3>
+
+          <h4>AIT &amp; AVC (revue Sarvananthan 2012, 41 études 1947–2011)</h4>
+          <ul>
+            <li>9 AIT ; 5 amauroses transitoires de quelques sec à 2 min sur 200 injections de mousse (Demagny 2002).</li>
+            <li>12 AVC, uniquement en <em>case reports</em> ; 8 après mousse, 7 avec FOP ; <strong>totalement résolutifs</strong>.</li>
+            <li>Cas isolés d'AVC retardé par <strong>thromboembolie paradoxale</strong> (Matsuzono 2018 ; Cavezzi, Parsi 2012).</li>
+          </ul>
+
+          <h4>Troubles visuels &amp; migraines</h4>
+          <ul>
+            <li>Scintillements, vision floue, voile gris, scotomes : apparition très rapide, durée quelques dizaines de minutes, <strong>toujours réversibles</strong>.</li>
+            <li>Incidence troubles visuels : 0,78 % (Sarvananthan), 1,4 % (Jia 2007).</li>
+            <li>Céphalées 0,70 %, migraines avec aura 0,27 % (Sarvananthan) ; Jia : 4,2 % au total.</li>
+          </ul>
+          <div class="note note--info">
+            <div class="ttl">Physiopathologie</div>
+            <ul>
+              <li><strong>Pas de lésions cérébrales</strong> (Gillet, Donnet 2010).</li>
+              <li>Action probable d'un médiateur endothélial (endothéline-1) libéré au site (Frullini 2011).</li>
+              <li>Rôle d'un shunt droit/gauche : FOP dans ≈ 2/3 des cas — mais <strong>25–30 % de la population</strong> est porteuse d'un FOP.</li>
+              <li>Tous ces troubles ont toujours été totalement régressifs.</li>
+            </ul>
+          </div>
+
+          <h4>Prévalences à retenir</h4>
+          <div class="stats">
+            <div class="stat"><div class="num">20–35 %</div><div class="lab">varices, France (HAS 2008)</div></div>
+            <div class="stat"><div class="num">12–21 %</div><div class="lab">migraine, adultes</div></div>
+            <div class="stat"><div class="num">25–30 %</div><div class="lab">FOP, population générale</div></div>
+          </div>
+
+          <h4>Contre-indications spécifiques à la mousse</h4>
+          <ul>
+            <li><span class="tag-abs">Absolue :</span> shunt droit-gauche (FOP) <strong>symptomatique</strong>.</li>
+            <li><span class="tag-rel">Relative :</span> antécédents de troubles neurologiques après sclérothérapie (mousse).</li>
+          </ul>
+
+          <div class="note note--ok">
+            <div class="ttl">Prévention (Reco 8, grade 2C)</div>
+            <ul>
+              <li>Rester allongé plus longtemps ; éviter le Valsalva précoce ; éviter les gros volumes de mousse (ou faire du liquide) ; décision au cas par cas.</li>
+              <li>FOP connu asymptomatique : décubitus prolongé, petit volume (≈ 2 ml), ne pas traiter les télangiectasies.</li>
+              <li>Migraine à aura : reconsidérer l'indication.</li>
+            </ul>
+          </div>
+          <div class="note note--warn">
+            <div class="ttl">Pas de relation évidente avec…</div>
+            <p>le type de varices, le produit/concentration, le volume de mousse, le gaz. La compression élastique <strong>accélère</strong> l'arrivée de la mousse au réseau profond ; les précautions habituelles n'empêchent pas les bulles d'arriver au cœur droit en &lt; 60 s (Parsi 2010).</p>
+          </div>
+
+          <h4>Recherche de FOP : recommandations discordantes</h4>
+          <ul>
+            <li>Monographies Aetoxysclérol/Fibrovein (ANSM) : recherche d'un FOP <em>conseillée</em> si antécédents d'AVC graves, HTAP ou <strong>migraine avec aura</strong> ; usage <em>déconseillé</em> si FOP connu asymptomatique.</li>
+            <li>À l'opposé, la <strong>Reco européenne 15</strong> est contre la recherche systématique de shunt droit-gauche ; la <strong>SFEMC</strong> indique qu'il n'y a pas d'indication à rechercher un FOP chez le migraineux, même avec aura.</li>
+          </ul>
+        </article>
+
+        <!-- FICHE 7 -->
+        <article id="f7" class="fiche">
+          <div class="fiche-eyebrow"><span class="dot"></span>Fiche 07 · Médico-légal</div>
+          <h3>Information, consentement &amp; déontologie</h3>
+
+          <h4>Cadre juridique</h4>
+          <ul>
+            <li><strong>Arrêt du 25 février 1997 :</strong> renversement de la charge de la preuve — c'est désormais au <strong>médecin de prouver</strong> qu'il a délivré l'information (auparavant au patient de prouver le défaut).</li>
+            <li><strong>Loi du 4 mars 2002 :</strong> consentement <strong>libre et éclairé</strong>, droit d'être informé, droit à réparation. Le consentement est toujours nécessaire et peut être retiré à tout moment ; un mineur apte peut s'opposer à l'information de ses parents.</li>
+            <li>Code de déontologie : articles 8, 32, 40, 70, 71 (compétence, sécurité, environnement adapté).</li>
+          </ul>
+
+          <h4>Risques en pratique (données MACSF)</h4>
+          <ul>
+            <li>Meyer 2015 — 46 dossiers (2002–2012) : motifs les plus fréquents = <strong>nécrose cutanée 43,5 %</strong> et <strong>MTEV 26,1 %</strong> (TVP 24 %, EP 6,5 %, TVS 6,5 %).</li>
+            <li>Responsabilité retenue (18 cas) : faute technique 55,6 %, <strong>défaut d'information 50 %</strong>, négligence 22,2 %.</li>
+            <li>Taux de contentieux ≈ <strong>1 / 500 000 scléroses</strong>.</li>
+          </ul>
+          <div class="note note--info">
+            <div class="ttl">À retenir</div>
+            <p>La faute technique peut être retenue malgré une pratique correcte, mais le <strong>défaut d'information est facile à éviter</strong> par une information claire et adaptée.</p>
+          </div>
+
+          <h4>Contenu de l'information (recommandation HAS 2012)</h4>
+          <ul>
+            <li>Information hiérarchisée, fondée sur des données validées ; présenter bénéfices et risques ; vérifier la compréhension ; l'écrit complète l'oral.</li>
+            <li>Décrire les examens, le bénéfice/risque, l'évolution avec/sans traitement, le coût et les limites de remboursement.</li>
+            <li>Insister sur les complications : <strong>nécroses cutanées et MTEV (++)</strong> ; ne pas négliger le risque de chute au cabinet (malaise vagal).</li>
+            <li>Grossesse non souhaitable (idem chirurgie programmée).</li>
+            <li>Tracer le consentement (document signé, double conservé) ; laisser un <strong>temps de réflexion (8 à 15 jours)</strong> ; assurer le suivi.</li>
+          </ul>
+        </article>
+
+        <!-- FICHE 8 -->
+        <article id="f8" class="fiche">
+          <div class="fiche-eyebrow"><span class="dot"></span>Fiche 08 · Technique alternative</div>
+          <h3>Ablation pharmaco-mécanique (APM / MOCA)</h3>
+          <p><strong>MOCA</strong> = <em>Mechanical Occlusion Chemically Assisted ablation</em> : irritation pariétale mécanique endovasculaire <strong>+</strong> injection intravasculaire d'un sclérosant. Deux dispositifs européens : <strong>ClariVein</strong> (Merit Medical) et <strong>FleboGrif</strong> (Balton).</p>
+
+          <h4>ClariVein — points techniques</h4>
+          <ul>
+            <li>Cathéter coaxial &lt; 3 Fr, fil rotatif 360° + bille de dispersion, moteur <strong>2000–3500 tours/min</strong>.</li>
+            <li>Positionnement à <strong>2 cm de la JSF</strong> sous échoguidage ; retrait continu ≈ 1 cm en 6–7 s (<strong>1–2 mm/s</strong>).</li>
+            <li>Sclérosant <strong>liquide uniquement</strong> : Aetoxisclérol 2 % ou STS (Fibrovein GVS 1,5 % / PVS 1,0 %).</li>
+            <li>Abaque de dosage 0,08–0,40 ml/min selon diamètre, longueur, molécule ; volume total <strong>1–10 ml</strong>.</li>
+          </ul>
+
+          <h4>Indications &amp; preuves</h4>
+          <ul>
+            <li>Approbations US 2008 / EU 2010 ; veine de <strong>4–12 mm</strong> (GVS, PVS, perforantes, sous lit d'ulcère).</li>
+            <li>Essai MARADONA (MOCA vs RFA, 209 patients) : succès anatomique à 2 ans 80 % (MOCA) vs 88,3 % (RFA), différence <strong>non significative</strong> ; complications précoces comparables (34 % vs 40,8 %) ; douleur post-op moindre.</li>
+            <li>Mirandola (329 patients) : succès immédiat 99,5 %, occlusion à 5 ans 84 % ; complications 4 % phlébite, 6 % induration, 5 % hyperpigmentation, 1,8 % TVP.</li>
+          </ul>
+
+          <div class="note note--ok">
+            <div class="ttl">À retenir — positionnement</div>
+            <ul>
+              <li>Efficacité <strong>supérieure à la sclérothérapie mousse</strong>, <strong>inférieure au thermique</strong>.</li>
+              <li><strong>Pas de risque neurologique</strong> (forme liquide, pas de bulles) ; traite la veine dès son origine.</li>
+              <li>À privilégier en cas d'ulcère ou de veine non systématisée. Manque encore le remboursement.</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- FICHE 9 -->
+        <article id="f9" class="fiche">
+          <div class="fiche-eyebrow"><span class="dot"></span>Fiche 09 · Pharmacologie</div>
+          <h3>Profil des sclérosants &amp; pharmacovigilance</h3>
+
+          <h4>Les sclérosants en France</h4>
+          <ul>
+            <li><strong>Lauromacrogol</strong> (Aetoxisclérol, 0,25–3 %) : détergent <strong>+ anesthésique local</strong>.</li>
+            <li><strong>Tétradécylsulfate de sodium / TDS</strong> (Trombovar, Fibrovein) : détergent.</li>
+            <li><strong>Glycérine + alun de chrome</strong> (Scleremo) : agent osmotique et irritant.</li>
+            <li>Mécanisme commun : destruction endothéliale par contact, spasme veineux, fermeture en cordon fibreux. Les tensio-actifs ≥ 0,5 % peuvent être moussés.</li>
+          </ul>
+
+          <h4>Classer les effets indésirables</h4>
+          <table class="tbl">
+            <thead><tr><th>EI bénins</th><th>EI sévères &amp; rares (&lt; 0,01 %)</th></tr></thead>
+            <tbody>
+              <tr><td>Malaise vagal</td><td>Événements thrombo-emboliques (veineux/artériels)</td></tr>
+              <tr><td>Gêne respiratoire / toux (mousse, &lt; 1 %)</td><td>Troubles neurologiques non ischémiques</td></tr>
+              <tr><td>Troubles visuels (mousse, &lt; 1 %)</td><td>Hypersensibilité allergique</td></tr>
+              <tr><td>Céphalées / migraines (mousse, &lt; 1 %)</td><td>Troubles du rythme (lauromacrogol)</td></tr>
+              <tr><td>Pigmentation transitoire (1–30 %), réactions au site</td><td>Nécroses cutanées</td></tr>
+            </tbody>
+          </table>
+
+          <h4>Quelques EI sévères en détail</h4>
+          <ul>
+            <li><strong>Nécrose cutanée :</strong> intra-artérielle par erreur (++), anastomose AV / vasospasme ; FDR = grands volumes ; prévention = échoguidage + volume minimal + points multiples ; arrêt si douleur intense ; CAT = thrombolyse + anticoagulants + corticoïdes.</li>
+            <li><strong>Hypersensibilité :</strong> décrite avec tous les sclérosants ; cas sévères &lt; 1/1000 (Davies 2021) ; décès décrits ; CAT = arrêt + antihistaminiques, corticoïdes, noradrénaline si besoin ; <strong>CI si antécédent de réaction</strong>.</li>
+            <li><strong>Thrombo-emboliques :</strong> immédiats (embolies gazeuses, mousse ++) ou retardés ; TVS/TVP 0,5–4 %, EP 0,1 % ; FDR = volume injecté, antécédents de MTE.</li>
+            <li><strong>Troubles du rythme :</strong> bradycardies/arrêts quelques minutes après l'injection ; <strong>activité inotrope négative du polidocanol</strong>, concentration/volume-dépendante, surtout dans les malformations vasculaires ; CAT = atropine IV.</li>
+          </ul>
+          <div class="note note--info">
+            <div class="ttl">Déclaration au CRPV</div>
+            <p>Déclarer les EI <strong>graves et inattendus</strong>. Éléments importants : indication, volume, concentration, spécialité, forme (liquide/mousse), délai de survenue, facteurs de risque.</p>
+          </div>
+          <p class="src">Take home : sclérosants très utilisés en France (polidocanol +++) ; EI rares mais sévères, probablement évitables en recherchant les FDR et en limitant les volumes ; informer les patients ; déclarer.</p>
+        </article>
+
+        <div class="chapter-head">
+          <div class="ch-kick">Chapitre 2</div>
+          <div class="ch-ttl">Techniques endoveineuses</div>
+        </div>
+
+        <!-- FICHE 10 -->
+        <article id="f10" class="fiche">
+          <div class="fiche-eyebrow"><span class="dot"></span>Fiche 10 · TVP aiguë</div>
+          <h3>Désobstruction veineuse à la phase aiguë</h3>
+
+          <p>L'<strong>anticoagulation</strong> reste le traitement principal de la maladie thrombo-embolique veineuse (MTEV). Ses objectifs : prévenir l'extension et la migration du thrombus, prévenir la récidive précoce et tardive, réduire la mortalité. En revanche, elle <strong>n'a pas d'effet sur la résorption du thrombus</strong>.</p>
+
+          <div class="note note--info">
+            <div class="ttl">Pourquoi désobstruer ?</div>
+            <p>Les objectifs propres de la <strong>thrombolyse / désobstruction</strong> sont de réduire les symptômes à la phase aiguë et de <strong>prévenir le syndrome post-thrombotique</strong> (SPT, fiche 11).</p>
+          </div>
+
+          <h4>Recommandations françaises (Sanchez, Rev Mal Resp 2019)</h4>
+          <table class="tbl">
+            <thead><tr><th>Situation</th><th>Recommandation</th></tr></thead>
+            <tbody>
+              <tr><td class="grp">TVP proximale aiguë du MI<br>(R97 / 4.2.1)</td><td>Anticoagulant curatif <strong>seul</strong> plutôt qu'une désobstruction vasculaire <span class="src">(grade 1+)</span></td></tr>
+              <tr><td class="grp">TVP ilio-fémorale sélectionnée<br>(R98 / 4.2.2)</td><td>Désobstruction interventionnelle <strong>suggérée</strong> si mauvaise tolérance (obstruction majeure, douleur, œdème) et <strong>absence d'amélioration à 15 jours</strong> malgré un anticoagulant bien conduit <span class="src">(grade 2+)</span></td></tr>
+              <tr><td class="grp">Thrombose ilio-fémorale ischémique<br>(4.2.7 – 4.2.8)</td><td>Revascularisation recommandée si vitalité du membre menacée <span class="src">(grade 1+)</span> ; par cathéter dirigé ou pharmaco-mécanique en 1ʳᵉ intention, à défaut thrombectomie chirurgicale <span class="src">(grade 2+)</span></td></tr>
+            </tbody>
+          </table>
+
+          <h4>Techniques interventionnelles</h4>
+          <ul>
+            <li><strong>CDT</strong> — fibrinolyse dirigée par cathéter (Sista, Radiology 2015).</li>
+            <li><strong>PCDT</strong> — désobstruction pharmaco-mécanique : fragmentation/irritation mécanique <strong>+</strong> thrombolytique.</li>
+            <li>Gestion de l'obstacle sous-jacent : angioplastie ± <strong>stent (nitinol, ⌀ 14 mm)</strong>.</li>
+          </ul>
+
+          <h4>Bénéfice sur le SPT… mais sur-risque hémorragique</h4>
+          <div class="stats">
+            <div class="stat"><div class="num">0,42</div><div class="lab">incidence du SPT, CDT vs anticoagulant — méta-analyse (IC 0,19–0,96)</div></div>
+            <div class="stat"><div class="num">×2,06</div><div class="lab">saignement, CDT vs anticoagulant (IC 1,62–2,62)</div></div>
+          </div>
+          <ul>
+            <li><strong>CaVenT (Enden, Lancet 2011) :</strong> SPT à 24 mois <strong>41,1 % (CDT) vs 55,6 %</strong> (standard), p = 0,047 ; perméabilité iliofémorale à 6 mois 65,9 % vs 47,4 % (p = 0,012).</li>
+            <li><strong>Bashir (JAMA Intern Med 2014, score de propension) :</strong> la CDT augmente l'EP (OR 1,69), les transfusions (1,85), l'hémorragie cérébrale (2,72), les hématomes (4,54) et la pose de filtre cave (2,89) ; pas de différence de mortalité.</li>
+          </ul>
+
+          <div class="note note--warn">
+            <div class="ttl">ATTRACT (Vedantham, NEJM 2017) — le débat actuel · N = 692</div>
+            <ul>
+              <li><strong>SPT global 47 % (PCDT) vs 48 %</strong> (contrôle) : pas de différence ; saignement majeur 1,7 % vs 0,3 %.</li>
+              <li>SPT modéré-sévère (Villalta ≥ 10) : <strong>18 % vs 24 %, RR 0,72 (0,54–0,97), p = 0,031</strong>.</li>
+              <li>Nuances : seuls 58 % avaient une extension ilio-fémorale, 58 % ont eu une CDT associée, seuls 28 % un stenting veineux.</li>
+            </ul>
+          </div>
+
+          <div class="note note--ok">
+            <div class="ttl">À retenir (Kahn, J Vasc Surg 2020)</div>
+            <p>Les TVP <strong>ilio-fémorales</strong> ont un pronostic à long terme plus défavorable (qualité de vie). La PCDT précoce améliore la qualité de vie (VEINES-QOL, bénéfice maintenu à 24 mois) et peut être envisagée chez des patients <strong>sélectionnés</strong> : symptômes sévères, faible risque hémorragique, après discussion bénéfice/risque.</p>
+          </div>
+          <p class="src">Réf. : Sanchez, Rev Mal Resp 2019 ; Enden, Lancet 2011 ; Bashir, JAMA Intern Med 2014 ; Vedantham, NEJM 2017 (ATTRACT) ; Kahn, J Vasc Surg 2020.</p>
+        </article>
+
+        <!-- FICHE 11 -->
+        <article id="f11" class="fiche">
+          <div class="fiche-eyebrow"><span class="dot"></span>Fiche 11 · SPT chronique</div>
+          <h3>Syndrome post-thrombotique &amp; obstruction veineuse résiduelle</h3>
+
+          <p>Après une TVP, trois évolutions sont possibles : <strong>résolution complète</strong>, <strong>reflux</strong> (séquelle valvulaire) ou <strong>obstruction résiduelle</strong>. Reflux et obstruction génèrent une <strong>hyperpression veineuse</strong>, substrat du SPT.</p>
+
+          <h4>L'obstruction veineuse résiduelle (RVO) est fréquente…</h4>
+          <p>Sa prévalence (en écho-doppler) varie largement selon les séries, de l'ordre de <strong>29 à 81 %</strong> (Cosmi 2010 : 37 % ; Prandoni 2009 : 29 % ; Prandoni 2002 : 81 % ; Siragusa 2008 : 70 % ; Napolitano 2014 : 70 %).</p>
+
+          <h4>…et associée au SPT</h4>
+          <div class="stats">
+            <div class="stat"><div class="num">RR 2,23</div><div class="lab">SPT si RVO présente — Kahn, Ann Intern Med 2008 (1,29–3,16)</div></div>
+            <div class="stat"><div class="num">OR 0,17</div><div class="lab">SPT si perméabilité veineuse — Haig 2014 (0,06–0,49)</div></div>
+          </div>
+          <p>La <strong>localisation ilio-fémorale</strong> aggrave le pronostic (Haenen, J Vasc Surg 2001 ; Delis, Ann Surg 2004 : claudication veineuse chez ≈ 44 % des patients, sévère dans 35 %).</p>
+
+          <h4>Diagnostic clinique : le score de Villalta</h4>
+          <p>L'ISTH (SSC) recommande l'échelle de <strong>Villalta</strong> pour définir présence et sévérité du SPT (Kahn, JTH 2009). On cote de 0 à 3 cinq <strong>symptômes</strong> (lourdeur, douleur, crampes, prurit, paresthésies) et six <strong>signes</strong> (œdème prétibial, induration cutanée, hyperpigmentation, nouvelles dilatations veineuses, rougeur, douleur à la compression du mollet).</p>
+          <table class="tbl">
+            <thead><tr><th>Score total</th><th>Interprétation</th></tr></thead>
+            <tbody>
+              <tr><td class="grp">&lt; 5</td><td>Absence de SPT</td></tr>
+              <tr><td class="grp">5 – 9</td><td>SPT léger</td></tr>
+              <tr><td class="grp">10 – 14</td><td>SPT modéré</td></tr>
+              <tr><td class="grp">&gt; 15</td><td>SPT sévère</td></tr>
+              <tr><td class="grp">Ulcère veineux</td><td>= SPT sévère (si ulcère non cicatrisé et score &lt; 15, le total est ramené à 15)</td></tr>
+            </tbody>
+          </table>
+          <div class="note note--warn">
+            <div class="ttl">Limites du score de Villalta</div>
+            <ul>
+              <li>N'évalue <strong>pas la claudication veineuse</strong> (thrombose ilio-fémorale).</li>
+              <li>Non spécifique du SPT : décrit en réalité une insuffisance veineuse. Étude REVERSE (Galanaud, JTH 2012) : forte corrélation du score entre les deux jambes (r = 0,68), 39,7 % des patients ayant un score controlatéral élevé (&gt; 4).</li>
+            </ul>
+          </div>
+
+          <h4>Traitement du SPT constitué</h4>
+          <ul>
+            <li><strong>Compression :</strong> ECS 20–30 mmHg, longueur genou, pour lourdeur/œdème (Kahn, J Thromb Thrombolys 2016) — recommandation <em>extrapolée</em> de l'insuffisance veineuse chronique primaire, basée sur 2 études non significatives (n total ≈ 115).</li>
+            <li><strong>Angioplastie / stenting veineux :</strong> nombreuses cohortes (Neglen 2007 : 982 membres — réduction de la douleur 62 %, de l'œdème 32 %, cicatrisation d'ulcère 58 % ; Raju 2009 ; Meng 2011 : cicatrisation 85 %…). Une <strong>seule</strong> étude (rétrospective, non contrôlée) a comparé l'angioplastie à la compression, en faveur de l'angioplastie.</li>
+          </ul>
+          <p class="src">Réf. : Kahn, Ann Intern Med 2008 ; Haig, J Vasc Surg Venous Lymphat Disord 2014 ; Kahn, JTH 2009 ; Galanaud, JTH 2012 ; Kahn, J Thromb Thrombolys 2016.</p>
+        </article>
+
+        <!-- FICHE 12 -->
+        <article id="f12" class="fiche">
+          <div class="fiche-eyebrow"><span class="dot"></span>Fiche 12 · Bilan &amp; imagerie</div>
+          <h3>Bilan pré- et post-recanalisation veineuse chronique</h3>
+
+          <h4>Objectifs du bilan</h4>
+          <ul>
+            <li><strong>Démarche diagnostique :</strong> évaluation clinique (subjective et objective) du SPT, de ses deux composantes (obstructive et reflux), description des réseaux pathologiques et <strong>cartographie veineuse</strong>.</li>
+            <li><strong>Décision thérapeutique :</strong> pertinence d'un traitement interventionnel, rapport bénéfice/risque, planification du geste (voies d'abord, segments à traiter, zone d'implantation des stents).</li>
+          </ul>
+
+          <h4>Évaluation clinique</h4>
+          <p>Anamnèse (ATCD d'ETEV, thrombophilie, comorbidités, anticoagulation, FRCV) et examen clinique avec scores et questionnaires standardisés : score de <strong>Villalta</strong> (fiche 11), questionnaire de qualité de vie <strong>CIVIQ</strong>, classification <strong>CEAP</strong> (C1 à C6), photos et mensurations — repris à l'identique avant et après traitement.</p>
+
+          <h4>Modalités d'exploration morphologique &amp; hémodynamique</h4>
+          <table class="tbl">
+            <thead><tr><th>Exploration</th><th>Avantages</th><th>Inconvénients</th></tr></thead>
+            <tbody>
+              <tr><td class="grp">Écho-doppler</td><td>1ʳᵉ intention ; évaluation hémodynamique</td><td>Surcharge pondérale, gaz intestinaux</td></tr>
+              <tr><td class="grp">Phlébo-scanner direct</td><td>Bonne résolution, analyse pariétale et luminale</td><td>Irradiant ; ponction bi-pédieuse</td></tr>
+              <tr><td class="grp">Phlébo-scanner indirect</td><td>Rapide ; ponction au pli du coude</td><td>Irradiant ; résolution en contraste limitée</td></tr>
+              <tr><td class="grp">Phlébo-IRM</td><td>Non irradiant</td><td>Acquisition prolongée, analyse limitée</td></tr>
+              <tr><td class="grp">Phlébographie</td><td><strong>Gold standard</strong> ; couplée au geste</td><td>Irradiant</td></tr>
+              <tr><td class="grp">IVUS</td><td>Luminogramme, degré de sténose</td><td>Coût, invasif</td></tr>
+            </tbody>
+          </table>
+
+          <h4>Écho-doppler — classification des lésions</h4>
+          <ul>
+            <li><strong>Morphologiques :</strong> occlusion complète (aiguë = veine dilatée, incompressible ; chronique = veine rétractée), obstruction partielle chronique (épaississement pariétal, synéchies endoluminales, fibrose rétractile), collatéralité identifiable ou non.</li>
+            <li><strong>Hémodynamiques :</strong> présence/absence de reflux ; présence d'un <strong>vaisseau vicariant</strong> (flux continu dans la collatéralité).</li>
+          </ul>
+          <div class="note note--info">
+            <div class="ttl">Repères par étage</div>
+            <ul>
+              <li><strong>Ilio-cave :</strong> absence de flux si obstruction ; flux continu en veine fémorale commune <strong>sans modulation respiratoire</strong> en cas d'obstruction iliaque.</li>
+              <li><strong>Fémoro-poplité :</strong> le <strong>défaut d'apport</strong> est le principal facteur de rethrombose et conditionne la perméabilité à moyen/long terme ; il guide le choix de la <em>landing zone</em> et des voies d'abord (jugulaire / fémoral / poplité / double).</li>
+            </ul>
+          </div>
+          <p><strong>Veine vicariante :</strong> flux permanent, spontané, centripète, hyperdébitant, continu, majoré à l'effort (test positif), <strong>sans reflux</strong>. Collatéralités à repérer : sus-pubienne, sous-cutanée abdominale, inversion du flux iliaque interne, veines latéro-utérine / ovarienne / lombaire.</p>
+
+          <h4>Recherche de reflux</h4>
+          <ul>
+            <li><strong>Profond</strong> (sur escabeau, manœuvre de compression-relâchement musculaire) : reflux pathologique &gt; <strong>1 s</strong> (veines fémorales, poplitées, musculaires).</li>
+            <li><strong>Superficiel</strong> (compression-relâchement des varices) : reflux &gt; <strong>0,5 s</strong> (<strong>0,35 s</strong> dans les perforantes) ; cartographie : origine, trajet, calibre, profondeur.</li>
+          </ul>
+
+          <h4>Suivi post-recanalisation</h4>
+          <p>Écho-doppler en 1ʳᵉ intention (imagerie en coupes si besoin), idéalement avec connaissance de l'état antérieur et du compte-rendu d'intervention. On contrôle l'<strong>endoprothèse</strong> : perméabilité, remplissage, défects endoluminaux, déformation/compression, flux modulés de bonne amplitude ; on réévalue collatéralité, réseau d'amont/d'aval, étage fémoro-poplité et VGS, reflux résiduel.</p>
+          <div class="note note--warn">
+            <div class="ttl">Complications à dépister</div>
+            <p>Thrombose, flux lents endoprothétiques, épaississements pariétaux, défaut d'apposition, compression externe.</p>
+          </div>
+          <p class="src">Réf. : Menez C, bilan pré/post-recanalisation veineuse chronique, CHU Grenoble-Alpes (DU de phlébologie).</p>
+        </article>
+
+        <!-- FICHE 13 -->
+        <article id="f13" class="fiche">
+          <div class="fiche-eyebrow"><span class="dot"></span>Fiche 13 · Filtres caves</div>
+          <h3>Filtres caves : indications, types &amp; complications</h3>
+
+          <p>La MTEV (TVP + EP) touche <strong>1,57 / 1000 habitants / an</strong> en France (Delluc, Thromb Haemost 2016) ; ≈ 35 000 hospitalisations pour EP, 5 % de décès. Le traitement reste l'anticoagulation — le filtre cave n'intervient qu'en alternative ciblée.</p>
+
+          <h4>Quatre types de filtres</h4>
+          <table class="tbl">
+            <thead><tr><th>Type</th><th>Principe</th></tr></thead>
+            <tbody>
+              <tr><td class="grp">Permanent</td><td>Filtration définitive, fixation dans la paroi de la VCI</td></tr>
+              <tr><td class="grp">Temporaire</td><td>Durée fixée par le constructeur, pas d'attache pariétale, retrait par kit jugulaire</td></tr>
+              <tr><td class="grp">Optionnel</td><td>Peut être retiré totalement (système dédié) ou laissé en place</td></tr>
+              <tr><td class="grp">Convertible</td><td>Laissé indéfiniment ; une partie peut être retirée, l'autre restant sous forme de stent</td></tr>
+            </tbody>
+          </table>
+
+          <h4>Pose</h4>
+          <ul>
+            <li>Voie <strong>jugulaire interne à privilégier</strong> (impérative si thrombose iliaque ou de la VCI) ou voie fémorale ; sous anesthésie locale et échographie.</li>
+            <li>Voie jugulaire : décubitus dorsal, <strong>Trendelenburg 15–30°</strong> pour dilater la veine.</li>
+            <li>Le plus <strong>tôt possible</strong> après l'événement : le risque de récidive sans anticoagulant est de ≈ 40 % au 1ᵉʳ mois, 10 % entre 2 et 6 mois, 3–12 %/an au-delà (Kearon &amp; Hirsh, NEJM 1997).</li>
+          </ul>
+
+          <div class="note note--info">
+            <div class="ttl">Ce qu'ont montré les études PREPIC</div>
+            <ul>
+              <li><strong>PREPIC I</strong> (filtres permanents, TVP proximale anticoagulée) : <strong>moins d'EP précoce</strong> mais <strong>plus de TVP à 2 ans</strong>, sans effet sur la mortalité.</li>
+              <li><strong>PREPIC II</strong> (filtre temporaire retiré à 3 mois + anticoagulation, EP) : <strong>pas de réduction des EP symptomatiques</strong> → pas d'intérêt à ajouter un filtre chez un patient anticoagulable.</li>
+            </ul>
+          </div>
+
+          <h4>Indications (recommandations)</h4>
+          <ul>
+            <li><strong>Recommandé</strong> en cas de TVP proximale <strong>ou</strong> d'EP avec <strong>contre-indication aux anticoagulants</strong> (ACCP, Chest 2016 ; grade 1B).</li>
+            <li><strong>Suggéré</strong> si TVP proximale diagnostiquée dans le mois précédent (± EP) et CI formelle à une anticoagulation curative (grade 2+).</li>
+            <li><strong>À ne pas ajouter</strong> si TVP proximale ou EP correctement anticoagulée (grade 1B ; recos françaises grade 1−).</li>
+            <li>Traumatisme majeur : <strong>pas</strong> de filtre en prévention primaire (Chest 2012, grade 1B) ; préférer la compression pneumatique (grade 2C).</li>
+            <li>Le filtre <strong>ne dispense pas</strong> du traitement préventif ; dès que le risque hémorragique est résolu, reprendre une anticoagulation conventionnelle.</li>
+          </ul>
+
+          <h4>Complications</h4>
+          <div class="stats">
+            <div class="stat"><div class="num">&lt; 10 %</div><div class="lab">thrombose du filtre (complication tardive)</div></div>
+          </div>
+          <ul>
+            <li><strong>Liées à la procédure :</strong> accès veineux (hématome, thrombose, fistule artério-veineuse) ; filtre (tilting/défaut d'inclinaison, migration, défaut d'ouverture, erreur de placement).</li>
+            <li><strong>Tardives :</strong> thrombose du filtre, fracture, perforation, infection.</li>
+            <li><strong>Au retrait :</strong> fracture, lésion de la VCI (dissection, hémorragie).</li>
+          </ul>
+
+          <div class="note note--ok">
+            <div class="ttl">À retenir</div>
+            <ul>
+              <li>Filtre <strong>uniquement</strong> quand les anticoagulants ne peuvent pas être utilisés ; indications au cas par cas.</li>
+              <li><strong>Préférer les filtres temporaires/optionnels</strong>, avec retrait dès que l'anticoagulation peut être réintroduite.</li>
+              <li>Suivi : traçabilité (carte patient), ASP à 24/48 h puis ASP (hauteur de L2) + écho-doppler veineux annuel ; décision multidisciplinaire en cas de doute.</li>
+            </ul>
+          </div>
+          <p class="src">Réf. : Mahé G, filtres caves (DU de phlébologie) ; études PREPIC ; Kaufman, J Vasc Interv Radiol 2020 (SIR) ; Kearon, Chest 2016 ; Sanchez, Rev Mal Resp 2019.</p>
+        </article>
+
+        <!-- FICHE 14 -->
+        <article id="f14" class="fiche">
+          <div class="fiche-eyebrow"><span class="dot"></span>Fiche 14 · Technique thermique</div>
+          <h3>Laser endoveineux (EVLA) : réalisation</h3>
+
+          <p>Le laser endoveineux détruit la veine <strong>par l'intérieur</strong> (contrairement au stripping qui l'arrache), en délivrant l'énergie thermique à la paroi par une <strong>fibre optique de petit calibre</strong> (≈ 600 µm). Indications principales : veines saphènes et perforantes. Geste <strong>ambulatoire</strong>, en salle dédiée ou au bloc, sous <strong>anesthésie par tumescence</strong> (± protoxyde d'azote, prémédication, hypnose).</p>
+
+          <div class="note note--info">
+            <div class="ttl">Conditions de réalisation</div>
+            <ul>
+              <li>Patient <strong>non à jeun</strong> ; <strong>pas d'interruption</strong> du traitement habituel, <strong>y compris anticoagulant</strong>.</li>
+              <li>Guidage échographique dans <strong>tous les cas</strong> ; matériel stérile à usage unique.</li>
+              <li>Salle dédiée = <strong>pas d'anesthésiste</strong> ; législation laser <strong>classe 4</strong> : pièce sans fenêtre, lunettes de protection, indicateur lumineux.</li>
+            </ul>
+          </div>
+
+          <h4>Déroulé de la technique (GVS)</h4>
+          <ul>
+            <li>Repérage et <strong>marquage échographique</strong>.</li>
+            <li>Ponction écho-guidée (<strong>aiguille 18G</strong>), mise en place d'un fil guide puis retrait de l'aiguille.</li>
+            <li><strong>Introducteur 6 Fr</strong>, vérification du matériel sous échographie.</li>
+            <li>Introduction de la fibre et cathétérisme écho-guidé sur la longueur à traiter.</li>
+            <li>Positionnement de la fibre à <strong>2 à 3 cm de la jonction saphéno-fémorale</strong>.</li>
+            <li>Anesthésie par tumescence écho-guidée (pompe), puis <strong>tir, chauffage et retrait continu</strong>.</li>
+          </ul>
+
+          <div class="note note--ok">
+            <div class="ttl">Rôle de la tumescence</div>
+            <p>Elle évite l'anesthésie générale, <strong>protège les tissus péri-veineux</strong> (limite brûlures et atteintes nerveuses) et <strong>améliore l'efficacité</strong> en plaquant la paroi au contact de la fibre. Double sécurité de positionnement : <strong>contrôle échographique</strong> + visualisation de la <strong>lumière rouge</strong> (faisceau pilote). L'énergie est calculée selon le type et la longueur de veine, et affichée en temps réel.</p>
+          </div>
+
+          <h4>Information du patient (fiche SFMV)</h4>
+          <p>Cicatrices <strong>absentes ou millimétriques</strong>, récupération courte sans arrêt de travail le plus souvent. Effets secondaires rares mais possibles : brûlures cutanées, infections (rares), <strong>troubles neurologiques sensitifs</strong> (paresthésies, baisse de sensibilité ; exceptionnellement moteurs), perforations, rupture/largage de fibre, <strong>thromboses veineuses</strong> superficielles ou profondes, hyperpigmentations ; allergie à la lidocaïne <strong>exceptionnelle</strong> (cf. fiche 16). Ecchymoses régressant en 10–15 jours.</p>
+          <p class="src">Réf. : Blaise S, réalisation d'un laser endoveineux (DU de phlébologie) ; fiche d'information « Groupe Veines », Société Française de Médecine Vasculaire. Voir fiche 15 (radiofréquence) et fiche 16 (complications).</p>
+        </article>
+
+        <!-- FICHE 15 -->
+        <article id="f15" class="fiche">
+          <div class="fiche-eyebrow"><span class="dot"></span>Fiche 15 · Technique thermique</div>
+          <h3>Radiofréquence segmentaire (ClosureFast)</h3>
+
+          <p>Oblitération endoveineuse par <strong>énergie thermique délivrée de façon séquentielle</strong> à la paroi. La sonde comporte un <strong>élément chauffant de 7 cm</strong> (calibre 7 Fr), disponible en 60 et 100 cm, avec un marquage <strong>tous les 6,5 cm</strong> et à 3 cm de l'élément chauffant, une bague repère réglable, un contacteur manuel et une lumière interne pour fil guide (0,022). Sondes spécifiques : <strong>élément de 3 cm pour la PVS</strong>, <strong>stylet pour les perforantes</strong>.</p>
+
+          <div class="note note--info">
+            <div class="ttl">Le générateur</div>
+            <p>Régule automatiquement la puissance pour maintenir l'élément chauffant à <strong>120 °C</strong>, par <strong>cycles de 20 secondes</strong> (120 °C atteint en ≈ 5 s). Affichage permanent : température, durée de cycle restante, <strong>puissance instantanée délivrée</strong>.</p>
+          </div>
+
+          <h4>Déroulé du traitement (GVS)</h4>
+          <ul>
+            <li>Introducteur <strong>7 ou 6 Fr</strong> ; cathétérisme direct ou sur fil guide (en douceur, <strong>arrêt immédiat si résistance</strong>).</li>
+            <li>Positionnement de l'extrémité à <strong>2 cm de la jonction saphéno-fémorale</strong>, à <strong>5 mm de l'abouchement de la veine épigastrique</strong> ; adapté au type de reflux ; <strong>vérification avant de débuter</strong>.</li>
+            <li>Traitement séquentiel avec retrait : <strong>2 cycles à la terminaison</strong> de la veine saphène, puis <strong>1 cycle tous les 6,5 cm</strong> ; arrêt automatique à 20 s ou piloté.</li>
+            <li><strong>Distance de sécurité de 3 cm</strong> en fin de procédure ; adaptation du nombre de cycles guidée par la puissance en fin de cycle (<strong>seuil 15 W</strong>).</li>
+          </ul>
+
+          <div class="note note--ok">
+            <div class="ttl">Anesthésie par tumescence (non spécifique de la RF, mais essentielle)</div>
+            <ul>
+              <li>Écho-guidée, <strong>aiguille 22G</strong>, pompe à galet ; sérum physiologique + bicarbonate + <strong>lidocaïne non adrénalinée</strong>.</li>
+              <li><strong>Gainage</strong> de la veine sur toute sa longueur <strong>et sa circonférence</strong> ; distance veine–peau <strong>≥ 15 mm</strong>.</li>
+              <li>Pour la PVS, vérifier l'éloignement suffisant des nerfs : <strong>tibial</strong> (creux poplité), <strong>sural</strong> (jambe).</li>
+            </ul>
+          </div>
+
+          <h4>Contrôle post-opératoire immédiat &amp; gestes associés</h4>
+          <ul>
+            <li>Vérifier la <strong>perméabilité de la jonction</strong> SF/SP et l'<strong>oblitération</strong> du tronc (épaississement pariétal ; aspect différent après laser et glue).</li>
+            <li>Gestes complémentaires : autres axes ou perforantes en RF, <strong>phlébectomies</strong> (fiche 17), sclérothérapie écho-guidée ; fermeture par strips ou colle.</li>
+          </ul>
+          <div class="note note--warn">
+            <div class="ttl">Compression &amp; anticoagulation</div>
+            <p>Compression élastique <strong>non impérative</strong> mais recommandée si <strong>C3–C6</strong>, phlébectomies associées ou grosses varices laissées en place (bas-chaussette classe 2). Anticoagulation <strong>7 jours</strong> chez les patients à risque thrombo-embolique.</p>
+          </div>
+          <p class="src">Réf. : oblitération endoveineuse par radiofréquence ClosureFast (DU de phlébologie). Voir fiche 14 (laser) et fiche 16 (complications).</p>
+        </article>
+
+        <!-- FICHE 16 -->
+        <article id="f16" class="fiche">
+          <div class="fiche-eyebrow"><span class="dot"></span>Fiche 16 · Complications TTEV</div>
+          <h3>Complications des traitements thermiques endoveineux</h3>
+
+          <p>L'incidence des complications des TTEV est <strong>faible, voire anecdotique</strong> lorsque les procédures sont menées avec rigueur. On les classe par <strong>chronologie</strong> : mise en place de la sonde, anesthésie par tumescence, phase de traitement thermique, puis suites précoces et tardives.</p>
+
+          <h4>1) Mise en place de la sonde</h4>
+          <div class="stats">
+            <div class="stat"><div class="num">0,5–5 %</div><div class="lab">risque infectieux au point de ponction (Shepherd 2010 ; Rasmussen 2011)</div></div>
+          </div>
+          <ul>
+            <li><strong>Migration du guide</strong> d'introducteur ; risque d'<strong>occlusion de la veine fémorale commune</strong>.</li>
+            <li><strong>Échec de montée</strong> : fausse route, trajet en « baïonnette », synéchies post-ESM, occlusion.</li>
+          </ul>
+
+          <h4>2) Anesthésie par tumescence</h4>
+          <ul>
+            <li><strong>Douleur +++</strong> (inextensibilité des fascias, dissection des tissus) ; <strong>malaise vagal</strong>.</li>
+            <li><strong>Allergie à la Xylocaïne :</strong> rare (&lt;&lt; 1 %), dans les 30 min (parfois retardée), du signe cutanéo-muqueux à l'œdème de Quincke → <strong>adrénaline 0,5 mg IM</strong> si anaphylaxie.</li>
+          </ul>
+          <div class="note note--danger">
+            <div class="ttl">Surdosage en Xylocaïne — y penser EN L'ABSENCE de signe cutanéo-muqueux</div>
+            <ul>
+              <li>Manifestations <strong>immédiates, neurologiques et cardiovasculaires</strong> ; prise en charge réanimatoire ; <strong>1 % de décès</strong> parmi les cas rapportés.</li>
+              <li>Prévention : <strong>ne pas dépasser 3 mg/kg</strong> de Xylocaïne ; <strong>tumescence échoguidée</strong>.</li>
+            </ul>
+          </div>
+
+          <h4>3) Phase de traitement thermique</h4>
+          <ul>
+            <li><strong>Neurologique :</strong> surtout la <strong>PVS</strong> (repérage préalable du nerf sural) ; en GVS, paresthésies &lt; 10 %, rapidement résolutives (Rasmussen 2011).</li>
+            <li><strong>Cutané :</strong> <strong>brûlures</strong> — vérifier la profondeur de la veine et réaliser une tumescence de qualité.</li>
+            <li><strong>Matériel :</strong> fusion ou brûlure au point de ponction de l'introducteur, fracture de sonde laser (mésusage).</li>
+          </ul>
+
+          <h4>4) Après la procédure</h4>
+          <p><strong>Précoces :</strong> ecchymoses/hématomes, TVS (fiche 5), matting (fiche 4) — faible incidence clinique, résolution spontanée rapide.</p>
+          <div class="note note--warn">
+            <div class="ttl">Le risque thrombotique (tardif)</div>
+            <ul>
+              <li><strong>EHIT</strong> (extension thrombotique à la jonction) : incidence <strong>1,4 %</strong>, bénins, résolutifs en ≈ 1 semaine. <strong>EHIT 1</strong> : surveillance Doppler itérative jusqu'à J7 ; <strong>EHIT 2-3-4</strong> : anticoagulation jusqu'à résolution.</li>
+              <li><strong>TVP 0,3 % / EP 0,1 %</strong> : faible. Intérêt d'une anticoagulation préventive à apprécier selon le risque du patient.</li>
+            </ul>
+          </div>
+          <h4>Facteurs de risque thrombotique prédictifs (potentiels)</h4>
+          <ul>
+            <li>Classe <strong>CEAP</strong> élevée ; <strong>phlébectomies associées</strong> ; antécédent de <strong>MTEV</strong>.</li>
+            <li>Diamètre <strong>GVS &gt; 7,5 mm</strong> ; élévation des <strong>D-dimères avec CRP normale</strong>.</li>
+          </ul>
+          <div class="note note--ok">
+            <div class="ttl">À retenir</div>
+            <p>Les complications potentiellement les plus graves (mais les moins fréquentes) sont le <strong>surdosage en Xylocaïne</strong> et les <strong>complications thrombotiques</strong>. Appréciation du risque MTEV, <strong>cartographie soigneuse</strong> et <strong>tumescence de qualité</strong> minimisent un risque déjà faible.</p>
+          </div>
+          <p class="src">Réf. : Dupas S, complications des TTEV (DU de phlébologie) ; Shepherd, Br J Surg 2010 ; Rasmussen, Br J Surg 2011 ; Healy, Eur J Vasc Endovasc Surg 2018 ; Ryer, J Vasc Surg 2016.</p>
+        </article>
+
+        <!-- FICHE 17 -->
+        <article id="f17" class="fiche">
+          <div class="fiche-eyebrow"><span class="dot"></span>Fiche 17 · Technique chirurgicale</div>
+          <h3>Phlébectomie ambulatoire</h3>
+
+          <p>Technique ancienne (Celsus), <strong>remise au goût du jour en 1956 par R. Müller</strong> : ablation de varices par micro-incisions, <strong>en ambulatoire sous anesthésie locale</strong>. Indications : varices <strong>non saphènes isolées</strong> ; <strong>complément</strong> d'un traitement de tronc saphène (éveinage ou TTEV) ; ou stratégie de <strong>préservation</strong> du tronc saphène incontinent (<strong>ASVAL</strong>).</p>
+
+          <h4>Repérage &amp; matériel</h4>
+          <ul>
+            <li>Marquage <strong>debout</strong> (zones saillantes) ; écho-Doppler pour l'abouchement, le trajet profond et les voies de drainage ; distinguer les varices par trajet et calibre.</li>
+            <li>Incision à l'<strong>aiguille 18G</strong> ou au couteau ophtalmique (<strong>éviter la zone marquée</strong>) ; crochets ; pinces (à disséquer, mosquito, Halstead) ; ciseau fin.</li>
+          </ul>
+
+          <div class="note note--info">
+            <div class="ttl">Anesthésie locale par tumescence — formule de Klein</div>
+            <ul>
+              <li><strong>Lidocaïne 1 %</strong> (± adrénaline) 20 ml + <strong>bicarbonate 8,4 %</strong> 10 ml + sérum physiologique 0,9 % 500 ml.</li>
+              <li>Variante bicarbonatée : lidocaïne 1 % 20 ml + bicarbonate 1,4 % 1000 ml. Aiguille 23G, pompe à galet ; aspect « peau d'orange », contrôle échographique.</li>
+            </ul>
+          </div>
+
+          <h4>Geste</h4>
+          <ul>
+            <li><strong>Crochetage</strong> à l'aveugle de l'adventice, traction douce, extériorisation puis section de la boucle entre deux pinces.</li>
+            <li><strong>Extraction</strong> par mouvements d'« essuie-glace » et reprise de proche en proche, avec de nouvelles incisions à distance.</li>
+            <li>Fermeture : stéristrips, colle ou pansement simple. Gestes associés : ligature (collatérales de gros calibre, perforantes), compression, <strong>sclérothérapie</strong> complémentaire (y compris per-procédure, « SAP », Kolluri 2018).</li>
+          </ul>
+
+          <h4>Complications</h4>
+          <ul>
+            <li><strong>Per-opératoires :</strong> douleurs, saignements.</li>
+            <li><strong>Post-opératoires :</strong> ecchymoses/hématomes, TVS, pigmentation, matting, <strong>paresthésies</strong>, lymphocèle.</li>
+          </ul>
+
+          <div class="note note--warn">
+            <div class="ttl">Associer phlébectomies au TTEV ? Le débat</div>
+            <ul>
+              <li><strong>Pour :</strong> meilleur résultat clinique et cosmétique, moins de récidive, moins de TVS des varices laissées, traitement « one shot », préférence des patients, coût-efficacité.</li>
+              <li><strong>Contre :</strong> traitement « par excès » de varices pouvant régresser, allongement du temps opératoire, majoration de la morbidité (ecchymoses, douleur, hématomes, paresthésies, lymphœdème, inconfort).</li>
+            </ul>
+          </div>
+          <p>Décision <strong>au cas par cas</strong> : attentes du patient, contexte médical, <strong>test du garrot</strong>, nature du reflux et extension des tributaires (ASVAL) ; pour les varices non saphènes, choix phlébectomie vs sclérothérapie selon localisation, profondeur, taille et caractère ramifié.</p>
+          <p class="src">Réf. : phlébectomies (DU de phlébologie) ; Kolluri R, Hays KU, Gohel MS, EJVES 2018 (phlébectomie augmentée par sclérose). Voir fiche 8 (ablation pharmaco-mécanique) et fiche 16 (complications).</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ QCM ============ -->
+  <section id="view-qcm" class="view" role="tabpanel" aria-labelledby="tab-qcm">
+    <div class="qcm-head">
+      <div class="kicker" style="font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--vein-2);font-weight:600;margin-bottom:10px;">64 questions · réponses multiples</div>
+      <h2 style="font-family:var(--serif);font-weight:500;font-size:clamp(1.6rem,3.6vw,2.3rem);line-height:1.1;letter-spacing:-.015em;margin:0 0 10px;">QCM d'entraînement</h2>
+      <p class="qhint">Chaque question peut comporter <strong>plusieurs réponses justes</strong>. Sélectionnez les propositions, puis validez pour voir votre score et les explications. Une question n'est comptée juste que si toutes les bonnes réponses (et elles seules) sont cochées.</p>
+    </div>
+
+    <div class="result-banner" id="resultBanner">
+      <div class="big" id="resultBig">—</div>
+      <div class="sub" id="resultSub"></div>
+    </div>
+
+    <div class="qcm-toolbar">
+      <div class="filters" id="filters" role="group" aria-label="Filtrer par thème"></div>
+      <div class="scorebox">
+        <span class="meter" id="meter">Répondu : <b>0</b> / 64</span>
+      </div>
+    </div>
+
+    <div id="quiz"></div>
+
+    <div class="qcm-actions">
+      <button class="btn btn-primary" id="gradeBtn">Valider mes réponses</button>
+      <button class="btn btn-ghost" id="resetBtn">Réinitialiser</button>
+    </div>
+  </section>
+</main>
+
+<footer>
+  Outil de révision généré à partir des supports du DU de phlébologie — complications de la sclérothérapie (1ʳᵉ &amp; 2ᵉ parties), information &amp; consentement, ablation pharmaco-mécanique, profil des sclérosants, désobstruction veineuse à la phase aiguë, syndrome post-thrombotique &amp; recanalisation veineuse chronique, bilan d'imagerie pré/post-recanalisation, filtres caves, ablation thermique endoveineuse (laser, radiofréquence), phlébectomie ambulatoire et complications des traitements thermiques endoveineux.
+  <span class="src">Vérifiez toujours les chiffres et recommandations avec vos cours et les guidelines en vigueur avant l'examen.</span>
+</footer>
+
+<script>
+/* ---------------- MODE SWITCH ---------------- */
+const tabFiches = document.getElementById('tab-fiches');
+const tabQcm = document.getElementById('tab-qcm');
+const viewFiches = document.getElementById('view-fiches');
+const viewQcm = document.getElementById('view-qcm');
+function setMode(mode){
+  const f = mode==='fiches';
+  tabFiches.setAttribute('aria-selected', f);
+  tabQcm.setAttribute('aria-selected', !f);
+  viewFiches.classList.toggle('active', f);
+  viewQcm.classList.toggle('active', !f);
+  window.scrollTo({top:0, behavior:'auto'});
+}
+tabFiches.addEventListener('click', ()=>setMode('fiches'));
+tabQcm.addEventListener('click', ()=>setMode('qcm'));
+
+/* ---------------- FICHE INDEX HIGHLIGHT ---------------- */
+const indexLinks = Array.from(document.querySelectorAll('#fiche-index a'));
+const fiches = indexLinks.map(a=>document.querySelector(a.getAttribute('href')));
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const id = '#'+e.target.id;
+      indexLinks.forEach(a=>a.classList.toggle('active', a.getAttribute('href')===id));
+    }
+  });
+},{rootMargin:'-30% 0px -60% 0px', threshold:0});
+fiches.forEach(f=>f&&io.observe(f));
+
+/* ---------------- QCM DATA ---------------- */
+const T = {GEN:'Généralités',PROD:'Produit',TECH:'Technique',CUT:'Cutané',TE:'Thrombo-emb.',NEU:'Neuro',LEG:'Médico-légal',MOCA:'APM/MOCA',PHARM:'Pharmaco',AIGU:'TVP aiguë',SPT:'SPT / RVO',BIL:'Bilan & imagerie',FILT:'Filtres caves',EVLA:'Laser',RF:'Radiofréquence',TTEV:'Compl. TTEV',PHLEB:'Phlébectomie'};
+const quiz = [
+ {th:T.GEN, q:"Classification des fréquences selon les recommandations européennes (Rabe 2014) :",
+  o:[["« Very common » = F > 10 %",1],["« Common » = 1 % ≤ F < 10 %",1],["« Rare » = 0,1 % ≤ F < 1 %",0],["« Uncommon » = 0,1 % ≤ F < 1 %",1],["« Very rare / cas isolés » = F < 0,01 %",1]],
+  e:"« Rare » correspond à 0,01 % ≤ F < 0,1 %. La fourchette 0,1–1 % est celle de « Uncommon »."},
+ {th:T.GEN, q:"Comparaison mousse vs liquide d'après le tableau de fréquences :",
+  o:[["La thrombophlébite superficielle est plus fréquente avec la mousse",1],["Le matting est plus fréquent avec la mousse",1],["Les troubles visuels sont plus fréquents avec la mousse",1],["La TVP musculaire/distale est plus fréquente avec la mousse",1],["L'anaphylaxie est plus fréquente avec la mousse",0]],
+  e:"Décès, anaphylaxie et EP restent à l'état de cas isolés quelle que soit la forme. Les autres items montrent bien une fréquence plus élevée avec la mousse."},
+ {th:T.PROD, q:"À propos de l'allergie / anaphylaxie en sclérothérapie :",
+  o:[["Le choc anaphylactique est rapporté à l'état de cas isolés",1],["La grossesse et les bétabloqueurs aggravent une anaphylaxie",1],["Un test cutané préalable protège efficacement du risque",0],["Une allergie au latex ou au sparadrap fait évoquer un terrain à risque",1],["L'allergie connue au sclérosant est une CI absolue (forme liquide)",1]],
+  e:"Un test ne protège pas vraiment puisque l'allergie survient après un premier contact."},
+ {th:T.PROD, q:"Toxicité myocardique supposée du polidocanol (pharmacovigilance) :",
+  o:[["4 décès rapportés entre 2007 et 2017",1],["Parmi eux, 2 nourrissons",1],["La pathogénie et l'imputabilité sont clairement établies",0],["Le polidocanol a une activité inotrope négative",1],["Les troubles du rythme associés sont concentration- et volume-dépendants",1]],
+  e:"Pathogénie et imputabilité restent non élucidées (réunion ANSM janvier 2018)."},
+ {th:T.GEN, q:"Contre-indications ABSOLUES du sclérosant liquide (Rabe 2014) :",
+  o:[["Allergie connue au sclérosant",1],["TVP ou EP évolutive",1],["Infection locale au point de ponction ou sepsis généralisé",1],["Grossesse",0],["Décubitus prolongé",1]],
+  e:"La grossesse (et l'allaitement) est une CI relative, pas absolue."},
+ {th:T.GEN, q:"Contre-indications RELATIVES du sclérosant liquide :",
+  o:[["Terrain allergique sévère",1],["Risque MTEV élevé (antécédent MTEV, thrombophilie, cancer)",1],["AOMI sévère occlusive",1],["Grossesse et allaitement maternel",1],["Shunt droit-gauche symptomatique",0]],
+  e:"Le shunt droit-gauche symptomatique est une CI absolue spécifique à la mousse, pas une CI relative du liquide."},
+ {th:T.TECH, q:"À propos de l'injection intra-artérielle :",
+  o:[["Quasiment disparue depuis l'utilisation de l'échoguidage",1],["Conséquence dramatique possible avec risque d'amputation > 50 %",1],["Zones à risque : cheville, creux poplité, pli inguinal, perforantes",1],["Échoguidage requis dans ces zones depuis le rapport ANAES 2004",1],["C'est l'effet indésirable le plus fréquent de la sclérothérapie",0]],
+  e:"Il s'agit de cas isolés ; c'est rare mais grave."},
+ {th:T.CUT, q:"Mécanismes possibles de la nécrose cutanée :",
+  o:[["Injection paravasculaire",1],["Passage dans les capillaires artériolaires via des micro-shunts",1],["Vasospasme réflexe artério-veineux",1],["Complication très fréquente de la sclérothérapie",0],["Schuller-Petrović : l'extravasation n'est pas seule responsable",1]],
+  e:"Les nécroses sont rares. L'étude de Schuller-Petrović montre que l'extravasation n'explique pas seule la nécrose."},
+ {th:T.CUT, q:"Pression d'injection et prévention de la nécrose :",
+  o:[["Les seringues de petit diamètre augmentent la pression d'injection",1],["Une seringue à insuline (1 cm³) génère une pression > 300 mmHg",1],["Il est recommandé d'utiliser des seringues à insuline",0],["Une injection douloureuse doit faire arrêter le geste",1],["Le volume conseillé par injection est de 0,1 à 0,5 ml",1]],
+  e:"On évite justement les seringues à insuline (petit diamètre → forte pression → risque d'extravasation)."},
+ {th:T.CUT, q:"À propos du matting :",
+  o:[["Fréquence de l'ordre de 1 à 10 %",1],["La persistance d'une veinule nourricière est une cause possible",1],["Le contexte hormonal et les facteurs angiogéniques sont évoqués",1],["Il régresse rarement de façon spontanée",0],["Le laser fait partie des traitements des néo-télangiectasies persistantes",1]],
+  e:"Le matting peut s'améliorer voire disparaître spontanément en quelques mois."},
+ {th:T.CUT, q:"À propos des pigmentations post-sclérothérapie :",
+  o:[["Fréquence de 7 à 30 % (médiane ≈ 17 %)",1],["Dépôts d'hémosidérine et mélanogénèse sont impliqués",1],["Le phototype (Fitzpatrick) et les UV jouent un rôle",1],["L'évacuation du coagulum endoluminal participe à la prévention",1],["La formule de Kligman contient de l'hydroquinone",1]],
+  e:"Toutes ces propositions sont exactes (formule de Kligman : hydroquinone, hydrocortisone, acide rétinoïque)."},
+ {th:T.TE, q:"Épidémiologie des TVP après sclérothérapie :",
+  o:[["L'incidence des TVP est < 1 %",1],["La grande majorité des TVP sont proximales",0],["Beaucoup sont asymptomatiques (contrôle de routine)",1],["TVP proximales et EP sont des événements très rares",1],["La PEC d'une TVP proximale occlusive diffère des reco habituelles",0]],
+  e:"La majorité des TVP sont distales, et la prise en charge d'une TVP proximale occlusive ne diffère pas des recommandations habituelles."},
+ {th:T.TE, q:"Risque thrombo-embolique et prévention :",
+  o:[["Gros volumes de mousse (> 10 ml) augmentent significativement le risque de TVP",1],["La sclérothérapie est un acte très thrombogène",0],["Antécédents personnels/familiaux de MTEV = sujet à risque",1],["Hamel-Desnos 2011 : activation marquée de la coagulation après mousse",0],["Limiter le volume est une mesure de prévention",1]],
+  e:"La sclérothérapie est peu thrombogène ; Hamel-Desnos 2011 ne retrouve pas de modification des marqueurs après mousse."},
+ {th:T.TE, q:"Thrombophilies — groupes de risque (Hamel-Desnos 2009) :",
+  o:[["Déficit en antithrombine = groupe à RR très élevé (groupe 1)",1],["SAPL avéré (clinique + biologique) = CI absolue",1],["Mutation hétérozygote du facteur V = groupe 1",0],["Déficit en protéine C = CI absolue",0],["Le groupe 1 contre-indique la sclérothérapie",1]],
+  e:"La mutation hétérozygote du facteur V est de risque modéré (groupe 3). Le déficit en protéine C est groupe 2 (risque élevé), pas une CI absolue."},
+ {th:T.TE, q:"Conduite pour le groupe 2 (RR élevé) de thrombophilie :",
+  o:[["Si anticoagulé au long cours : sclérothérapie sans recours aux HBPM",1],["Sinon : HBPM 4000 UI (ou fondaparinux 2,5 mg) pendant 7 jours",1],["1ʳᵉ injection en même temps que la sclérothérapie",1],["Le groupe 2 comprend la mutation homozygote du facteur II",1],["Le groupe 2 inclut l'hyperhomocystéinémie",0]],
+  e:"L'hyperhomocystéinémie appartient au groupe 3 (risque modéré)."},
+ {th:T.TE, q:"Recommandations européennes 9 et 15 :",
+  o:[["Haut risque : thromboprophylaxie HBPM/fondaparinux 7 jours (GRADE 1C)",1],["Éviter un volume de mousse important (GRADE 1C)",1],["Reco 15 : recherche biologique systématique de thrombophilie conseillée",0],["Associer une prévention mécanique (compression, mobilisation)",1],["Décision au cas par cas, réévaluation bénéfice/risque",1]],
+  e:"La recommandation 15 déconseille au contraire la recherche biologique systématique de thrombophilie en routine."},
+ {th:T.TE, q:"Insuffisance saphène chez un patient à haut risque thrombotique :",
+  o:[["Ablation thermique préférable en première intention si réalisable",1],["L'échosclérothérapie mousse reste une option selon le contexte",1],["Le rapport bénéfice/risque individuel doit être évalué",1],["Une thromboprophylaxie adaptée doit être effectuée",1],["La sclérothérapie est formellement interdite dans tous les cas",0]],
+  e:"La mousse reste possible selon le contexte ; ce n'est pas une interdiction absolue (Hamel-Desnos & Miserey 2018)."},
+ {th:T.NEU, q:"AIT et AVC en sclérothérapie (revue Sarvananthan) :",
+  o:[["Les AVC décrits l'ont été uniquement en case reports",1],["La majorité des AVC décrits sont survenus après mousse",1],["Un FOP est fréquemment retrouvé dans ces cas",1],["Les AVC décrits ont laissé des séquelles lourdes",0],["Des AVC retardés par thromboembolie paradoxale ont été décrits",1]],
+  e:"Les AVC décrits ont été totalement résolutifs."},
+ {th:T.NEU, q:"Troubles visuels post-sclérothérapie :",
+  o:[["Scintillements, vision floue, voile gris, scotomes",1],["Apparition très rapide",1],["Toujours réversibles",1],["Durent généralement plusieurs jours",0],["Incidence ≈ 0,78 % dans la revue de Sarvananthan",1]],
+  e:"Ils durent quelques dizaines de minutes, pas plusieurs jours."},
+ {th:T.NEU, q:"Physiopathologie des troubles neurologiques :",
+  o:[["Aucune lésion cérébrale mise en évidence (Gillet, Donnet 2010)",1],["Médiateur endothélial (endothéline) libéré au site d'injection",1],["FOP retrouvé dans environ 2/3 des cas",1],["25 à 30 % de la population générale est porteuse d'un FOP",1],["Ces troubles laissent fréquemment des séquelles définitives",0]],
+  e:"Tous ces troubles ont toujours été totalement régressifs."},
+ {th:T.NEU, q:"Prévalences à connaître :",
+  o:[["Varices en France : 20 à 35 %",1],["Migraine : 12 à 21 % des adultes",1],["FOP : 25 à 30 % de la population générale",1],["Le FOP est une pathologie rare (< 1 %)",0],["Ces prévalences élevées expliquent la fréquence des coïncidences",1]],
+  e:"Le FOP est au contraire très fréquent (25–30 %), ce qui complique l'imputabilité."},
+ {th:T.NEU, q:"Contre-indications neurologiques de la mousse :",
+  o:[["Shunt droit-gauche symptomatique = CI absolue à la mousse",1],["Antécédents de troubles neuro après S(E)M = CI relative",1],["La migraine sans aura est une CI absolue à la mousse",0],["La recommandation n°8 ne comporte que des recommandations grade 2C",1],["Il existe une relation claire entre volume de mousse et complications neuro",0]],
+  e:"Il n'y a pas de relation évidente entre volume/produit/gaz et complications neuro ; la migraine sans aura n'est pas une CI absolue."},
+ {th:T.NEU, q:"Prévention du risque neurologique :",
+  o:[["FOP asymptomatique : décubitus prolongé, petit volume, éviter le Valsalva",1],["FOP asymptomatique : ne pas traiter les télangiectasies",1],["La compression élastique ralentit l'arrivée de la mousse au réseau profond",0],["Les précautions habituelles empêchent totalement le passage des bulles au cœur droit",0],["Devant une migraine avec aura, reconsidérer l'indication",1]],
+  e:"La compression élastique accélère l'arrivée de la mousse ; Parsi 2010 montre que les bulles atteignent le cœur droit en < 60 s malgré les précautions."},
+ {th:T.NEU, q:"Recherche d'un FOP : recommandations discordantes :",
+  o:[["Monographie Aetoxysclérol : recherche conseillée si ATCD d'AVC graves, HTAP ou migraine avec aura",1],["Reco européenne n°15 : contre la recherche systématique de shunt droit-gauche",1],["La SFEMC recommande de rechercher un FOP chez tout migraineux avec aura",0],["Usage déconseillé chez le porteur d'un FOP connu asymptomatique (monographie)",1],["Toutes ces recommandations sont parfaitement concordantes",0]],
+  e:"La SFEMC indique l'absence d'indication à rechercher un FOP chez le migraineux, même avec aura — ce qui contredit la monographie."},
+ {th:T.LEG, q:"Cadre juridique de l'information et du consentement :",
+  o:[["Depuis l'arrêt du 25 février 1997, le médecin doit prouver l'information délivrée",1],["La loi du 4 mars 2002 consacre le consentement libre et éclairé",1],["Le patient peut retirer son consentement à tout moment",1],["L'information est une obligation contractuelle pour le médecin",1],["Avant 1997, c'était au médecin de prouver le défaut d'information",0]],
+  e:"Avant 1997, c'était au patient d'apporter la preuve qu'une information n'avait pas été délivrée."},
+ {th:T.LEG, q:"Contentieux en sclérothérapie (données MACSF, Meyer) :",
+  o:[["La nécrose cutanée est le motif de plainte le plus fréquent (43,5 %)",1],["La MTEV représente environ 26 % des motifs",1],["Taux de contentieux ≈ 1/500 000 scléroses",1],["Responsabilité retenue pour défaut d'information dans 50 % des cas reconnus",1],["Un défaut d'information est difficile à éviter malgré une information claire",0]],
+  e:"Le défaut d'information est facile à éviter par une information claire et adaptée."},
+ {th:T.LEG, q:"Contenu de l'information à délivrer :",
+  o:[["Informer sur le coût et les limites de remboursement",1],["Expliquer le risque de nécrose cutanée et de MTEV",1],["Laisser un temps de réflexion (8 à 15 jours)",1],["Le risque de chute au cabinet peut être négligé",0],["La grossesse est non souhaitable pendant le traitement",1]],
+  e:"Le risque de chute (malaise vagal) ne doit pas être négligé."},
+ {th:T.MOCA, q:"Principe de l'ablation pharmaco-mécanique (MOCA) :",
+  o:[["MOCA = Mechanical Occlusion Chemically Assisted ablation",1],["Association d'une irritation pariétale mécanique et d'un sclérosant",1],["ClariVein et FleboGrif sont deux dispositifs disponibles en Europe",1],["Le ClariVein utilise le sclérosant sous forme de mousse uniquement",0],["Le FleboGrif utilise du polidocanol mousse",1]],
+  e:"Le ClariVein utilise la forme liquide uniquement ; le FleboGrif utilise du polidocanol mousse 2 ou 3 %."},
+ {th:T.MOCA, q:"ClariVein — points techniques :",
+  o:[["Positionnement à 2 cm de la jonction saphéno-fémorale",1],["Sclérosant utilisé : Aetoxisclérol 2 % liquide",1],["Retrait à environ 1–2 mm/s",1],["Fil rotatif à 2000–3500 tours/min",1],["Volume total injecté dépassant systématiquement 20 ml",0]],
+  e:"Le volume total est de 1 à 10 ml."},
+ {th:T.MOCA, q:"APM — efficacité et avantages :",
+  o:[["Efficacité supérieure à la sclérothérapie à la mousse",1],["Efficacité inférieure aux techniques thermiques",1],["Pas de risque neurologique (forme liquide, pas de bulles)",1],["Dans MARADONA, succès anatomique à 2 ans significativement supérieur pour MOCA vs RFA",0],["À privilégier en cas d'ulcère ou de veine non systématisée",1]],
+  e:"Dans MARADONA, le succès à 2 ans était de 80 % (MOCA) vs 88,3 % (RFA), différence non significative (p=0,066)."},
+ {th:T.PHARM, q:"Les sclérosants veineux en France :",
+  o:[["Le lauromacrogol (Aetoxisclérol) est détergent + anesthésique local",1],["Le tétradécylsulfate de sodium est un agent détergent",1],["La glycérine chromée (Scleremo) est osmotique et irritante",1],["Les tensio-actifs peuvent être moussés à ≥ 0,5 %",1],["Le polidocanol est le sclérosant le moins utilisé en France",0]],
+  e:"Le polidocanol est au contraire le plus utilisé en France (+++)."},
+ {th:T.PHARM, q:"Classement des effets indésirables :",
+  o:[["Le malaise vagal est un EI bénin",1],["La pigmentation transitoire peut concerner 1 à 30 % des cas",1],["Les troubles du rythme sont un EI sévère et rare (< 0,01 %)",1],["Les nécroses cutanées sont des EI bénins",0],["La gêne respiratoire / toux est surtout liée à la mousse",1]],
+  e:"Les nécroses cutanées font partie des EI sévères et rares."},
+ {th:T.PHARM, q:"Réactions d'hypersensibilité allergique :",
+  o:[["Décrites avec tous les sclérosants",1],["Incidence des cas sévères < 1/1000 (Davies 2021)",1],["Des décès ont été décrits",1],["Un antécédent de réaction allergique à un sclérosant est une CI",1],["La conduite à tenir n'inclut jamais la noradrénaline",0]],
+  e:"La CAT inclut antihistaminiques, corticoïdes et noradrénaline si besoin."},
+ {th:T.PHARM, q:"Événements thrombo-emboliques (physiopathologie) :",
+  o:[["Ils peuvent être immédiats ou retardés",1],["Les embolies gazeuses immédiates sont surtout liées à la mousse",1],["L'activation de l'hémostase serait dose- et substance-dépendante",1],["Le volume injecté et les antécédents de MTE sont des FDR",1],["La forme liquide est plus emboligène (gaz) que la mousse",0]],
+  e:"Ce sont les embolies gazeuses de la mousse (bulles) qui sont en cause, pas le liquide."},
+ {th:T.PHARM, q:"Troubles du rythme liés aux sclérosants :",
+  o:[["Bradycardies / arrêts quelques minutes après l'injection",1],["Le polidocanol a une activité inotrope négative",1],["Surviennent surtout dans les malformations vasculaires",1],["La CAT comporte l'atropine IV",1],["Augmenter le volume et la concentration est une mesure de prévention",0]],
+  e:"La prévention repose au contraire sur la limitation du volume et de la concentration."},
+ {th:T.PHARM, q:"Déclaration à la pharmacovigilance (CRPV) :",
+  o:[["Déclarer les EI graves et inattendus",1],["Éléments importants : volume, concentration, spécialité",1],["Préciser la forme (liquide/mousse) et le délai de survenue",1],["La déclaration ne concerne que les décès",0],["Les EI sévères sont probablement évitables dans la majorité des cas",1]],
+  e:"La déclaration concerne les EI graves et inattendus, pas uniquement les décès."},
+ {th:T.PHARM, q:"Nécrose cutanée — conduite et prévention :",
+  o:[["L'injection intra-artérielle par erreur est une cause majeure",1],["Les grands volumes de sclérosant sont un facteur de risque",1],["La CAT peut associer thrombolyse, anticoagulants et corticoïdes",1],["Volume minimal + points d'injection multiples = prévention",1],["Il faut poursuivre l'injection malgré une douleur intense",0]],
+  e:"Une douleur intense doit faire arrêter immédiatement le geste."},
+ {th:T.TECH, q:"Sécurité technique et infection :",
+  o:[["La « triple sécurité » : échoguidage, reflux, diffusion de la mousse",1],["L'infection est exceptionnelle (un cas d'endocardite décrit en France)",1],["Les sclérosants ont un probable effet antiseptique",1],["Les télangiectasies comportent des micro-shunts, zones à risque",1],["L'échoguidage n'apporte rien à la prévention de l'injection intra-artérielle",0]],
+  e:"L'échoguidage est au cœur de la prévention de l'injection intra-artérielle (et de la triple sécurité)."},
+ {th:T.AIGU, q:"Anticoagulation et désobstruction à la phase aiguë de la TVP :",
+  o:[["L'anticoagulation prévient l'extension et la migration du thrombus",1],["L'anticoagulation réduit la mortalité de la MTEV",1],["L'anticoagulation favorise activement la résorption du thrombus",0],["La thrombolyse vise à réduire les symptômes aigus et à prévenir le SPT",1],["La thrombolyse n'a aucun intérêt sur le syndrome post-thrombotique",0]],
+  e:"L'anticoagulant n'a PAS d'effet sur la résorption du thrombus ; c'est précisément l'objectif (résorption, prévention du SPT) de la thrombolyse / désobstruction."},
+ {th:T.AIGU, q:"Recommandations françaises (Sanchez 2019) sur la désobstruction de la TVP :",
+  o:[["TVP proximale aiguë : anticoagulant curatif seul plutôt que désobstruction (grade 1+)",1],["Désobstruction interventionnelle suggérée pour certaines TVP ilio-fémorales mal tolérées (grade 2+)",1],["Critère de mauvaise tolérance : absence d'amélioration à 15 jours malgré un anticoagulant bien conduit",1],["Toute TVP proximale relève d'une désobstruction de première intention",0],["Thrombose ilio-fémorale ischémique menaçant le membre : revascularisation recommandée (grade 1+)",1]],
+  e:"La désobstruction systématique n'est pas recommandée : l'anticoagulant seul est la règle (grade 1+), la désobstruction étant réservée à des cas sélectionnés."},
+ {th:T.AIGU, q:"Essais de thrombolyse dirigée par cathéter (CDT/PCDT) :",
+  o:[["CaVenT (Enden, Lancet 2011) : réduction du SPT à 24 mois (≈ 41 % vs 56 %)",1],["ATTRACT (Vedantham, NEJM 2017) : pas de réduction du SPT global (47 % vs 48 %)",1],["ATTRACT : réduction du SPT modéré-sévère (Villalta ≥ 10), RR 0,72",1],["La CDT n'augmente pas le risque hémorragique",0],["Bashir 2014 : la CDT augmente l'EP, les transfusions et la pose de filtre cave",1]],
+  e:"La CDT/PCDT augmente le risque de saignement (méta-analyse OR ≈ 2,06 ; ATTRACT : saignement majeur 1,7 % vs 0,3 %)."},
+ {th:T.AIGU, q:"Désobstruction pharmaco-mécanique (PCDT) — où en est-on ?",
+  o:[["Les TVP ilio-fémorales ont un pronostic à long terme plus défavorable",1],["La PCDT précoce améliore la qualité de vie chez des patients sélectionnés (Kahn 2020)",1],["Dans ATTRACT, tous les patients avaient une extension ilio-fémorale",0],["La gestion d'un obstacle résiduel peut nécessiter un stent veineux",1],["La PCDT est indiquée chez tous les patients ayant une TVP proximale",0]],
+  e:"Dans ATTRACT, seuls 58 % des patients avaient une extension ilio-fémorale et 28 % ont eu un stenting ; la PCDT reste réservée à des patients sélectionnés."},
+ {th:T.SPT, q:"Évolution après une TVP :",
+  o:[["Trois évolutions possibles : résolution complète, reflux, obstruction résiduelle",1],["Reflux et obstruction résiduelle entraînent une hyperpression veineuse",1],["L'obstruction veineuse résiduelle est un événement exceptionnel",0],["L'obstruction veineuse résiduelle est associée à un sur-risque de SPT",1],["La localisation ilio-fémorale aggrave le pronostic",1]],
+  e:"L'obstruction veineuse résiduelle est au contraire fréquente (≈ 29 à 81 % selon les séries)."},
+ {th:T.SPT, q:"Obstruction veineuse résiduelle (RVO) et SPT :",
+  o:[["RR de SPT ≈ 2,23 en présence d'une RVO (Kahn, Ann Intern Med 2008)",1],["La perméabilité veineuse est protectrice vis-à-vis du SPT (OR 0,17, Haig 2014)",1],["La thrombose ilio-fémorale entraîne une claudication veineuse chez une part notable des patients",1],["La RVO n'a aucun lien démontré avec le SPT",0],["La claudication veineuse n'existe pas après thrombose ilio-fémorale",0]],
+  e:"La RVO est nettement associée au SPT (RR ≈ 2,23) ; la claudication veineuse touche ≈ 44 % des patients après thrombose ilio-fémorale (Delis 2004)."},
+ {th:T.SPT, q:"Score de Villalta (Kahn, JTH 2009) :",
+  o:[["Recommandé par l'ISTH pour définir présence et sévérité du SPT",1],["Combine 5 symptômes et 6 signes cliniques cotés de 0 à 3",1],["Un score < 5 traduit l'absence de SPT",1],["Un ulcère veineux non cicatrisé fait classer en SPT sévère",1],["Un score de 10 à 14 correspond à un SPT léger",0]],
+  e:"Un score de 10 à 14 correspond à un SPT modéré ; le SPT léger correspond à 5–9."},
+ {th:T.SPT, q:"Limites du score de Villalta (étude REVERSE, Galanaud 2012) :",
+  o:[["Il n'évalue pas la claudication veineuse",1],["Il n'est pas spécifique du SPT (décrit une insuffisance veineuse)",1],["Forte corrélation du score entre les deux jambes (r = 0,68)",1],["Le traitement du SPT constitué repose surtout sur la compression (ECS 20–30 mmHg)",1],["Les recommandations de compression dans le SPT reposent sur de larges essais randomisés positifs",0]],
+  e:"La compression dans le SPT est extrapolée de l'insuffisance veineuse primaire et repose sur 2 études non significatives (n ≈ 115)."},
+ {th:T.BIL, q:"Modalités d'exploration avant recanalisation veineuse :",
+  o:[["L'écho-doppler est l'examen de première intention",1],["La phlébographie est le gold standard et peut être couplée au geste",1],["La phlébo-IRM est irradiante",0],["L'IVUS évalue le luminogramme et le degré de sténose",1],["Le phlébo-scanner direct utilise une ponction bi-pédieuse",1]],
+  e:"La phlébo-IRM est justement NON irradiante (ses limites sont l'acquisition prolongée et l'analyse limitée)."},
+ {th:T.BIL, q:"Écho-doppler — analyse des lésions veineuses chroniques :",
+  o:[["L'occlusion chronique se traduit par une veine rétractée",1],["L'obstruction partielle chronique peut être due à des synéchies endoluminales",1],["En cas d'obstruction iliaque, le flux fémoral commun est continu, sans modulation respiratoire",1],["Une veine vicariante présente un reflux marqué",0],["Le défaut d'apport fémoro-poplité est un facteur de rethrombose",1]],
+  e:"La veine vicariante a un flux permanent, spontané, centripète, continu et SANS reflux ; il est majoré à l'effort."},
+ {th:T.BIL, q:"Seuils de reflux pathologique en écho-doppler :",
+  o:[["Reflux profond pathologique : durée > 1 seconde",1],["Reflux superficiel pathologique : durée > 0,5 seconde",1],["Reflux des perforantes : seuil à 0,35 seconde",1],["Le reflux profond se recherche en décubitus strict, sans manœuvre",0],["La recherche se fait par manœuvre de compression-relâchement",1]],
+  e:"Le reflux profond se recherche debout (sur escabeau) avec manœuvre de compression-relâchement musculaire, pas en décubitus."},
+ {th:T.BIL, q:"Suivi post-recanalisation veineuse :",
+  o:[["L'écho-doppler est l'examen de première intention du suivi",1],["On contrôle la perméabilité de l'endoprothèse et la qualité des flux",1],["La connaissance de l'état antérieur et du CR d'intervention est un pré-requis",1],["La thrombose et les flux lents endoprothétiques font partie des complications",1],["Un défaut d'apposition du stent est sans conséquence et n'est pas recherché",0]],
+  e:"Le défaut d'apposition (comme la compression externe ou les épaississements pariétaux) est une complication à dépister."},
+ {th:T.FILT, q:"Les types de filtres caves :",
+  o:[["Le filtre permanent est fixé dans la paroi de la VCI",1],["Le filtre temporaire n'a pas d'attache pariétale (si la durée est respectée)",1],["Le filtre optionnel peut être retiré totalement ou laissé en place",1],["Le filtre convertible laisse une partie en place sous forme de stent",1],["Un filtre temporaire est destiné à rester à vie",0]],
+  e:"Le filtre temporaire est retiré dans le délai fixé par le constructeur (kit d'extraction jugulaire)."},
+ {th:T.FILT, q:"Apports des études PREPIC :",
+  o:[["PREPIC I : moins d'EP précoce avec le filtre",1],["PREPIC I : davantage de TVP à 2 ans avec le filtre",1],["PREPIC I : amélioration de la mortalité grâce au filtre",0],["PREPIC II : pas de réduction des EP symptomatiques avec un filtre temporaire",1],["Chez un patient anticoagulable, ajouter un filtre apporte un bénéfice net",0]],
+  e:"Les filtres ne réduisent pas la mortalité et, chez un patient anticoagulable, n'apportent pas de bénéfice (PREPIC I et II)."},
+ {th:T.FILT, q:"Indications du filtre cave (recommandations) :",
+  o:[["TVP proximale avec contre-indication aux anticoagulants : filtre recommandé (grade 1B)",1],["EP avec contre-indication aux anticoagulants : filtre recommandé (grade 1B)",1],["TVP proximale correctement anticoagulée : ne pas ajouter de filtre (grade 1B)",1],["Traumatisme majeur : filtre recommandé en prévention primaire de la MTEV",0],["Le filtre dispense du traitement préventif",0]],
+  e:"En cas de traumatisme majeur, le filtre n'est PAS recommandé en prévention primaire (préférer la compression pneumatique) ; le filtre ne dispense jamais de la prévention."},
+ {th:T.FILT, q:"Pose, complications et suivi des filtres caves :",
+  o:[["La voie jugulaire interne est à privilégier (impérative si thrombose iliaque/VCI)",1],["Le filtre doit être posé le plus tôt possible après l'événement",1],["La thrombose du filtre (complication tardive) a une incidence < 10 %",1],["Le tilting, la migration et la fracture sont des complications décrites",1],["On préfère les filtres permanents que l'on ne retire jamais",0]],
+  e:"On préfère au contraire les filtres temporaires/optionnels, retirés dès que l'anticoagulation peut être réintroduite."},
+ {th:T.EVLA, q:"Laser endoveineux — conditions de réalisation :",
+  o:[["Geste ambulatoire réalisé sous anesthésie par tumescence",1],["Patient non à jeun",1],["Le traitement anticoagulant habituel doit être interrompu",0],["Guidage échographique dans tous les cas",1],["La fibre est positionnée à 2 à 3 cm de la jonction saphéno-fémorale",1]],
+  e:"On n'interrompt PAS le traitement habituel, y compris anticoagulant ; la fibre se positionne à 2–3 cm de la JSF, sous contrôle écho."},
+ {th:T.EVLA, q:"Sécurité et environnement du laser endoveineux :",
+  o:[["Le laser est de classe 4 (pièce dédiée, lunettes, indicateur lumineux)",1],["Une salle dédiée implique l'absence d'anesthésiste",1],["La tumescence protège les tissus péri-veineux et améliore le contact fibre-paroi",1],["L'anesthésie générale est la règle",0],["Double sécurité de positionnement : contrôle échographique + faisceau lumineux rouge",1]],
+  e:"Le geste se fait sans anesthésie générale (tumescence) et la salle dédiée fonctionne sans anesthésiste."},
+ {th:T.RF, q:"Sonde et générateur ClosureFast :",
+  o:[["Élément chauffant de 7 cm, calibre 7 Fr",1],["Marquage tous les 6,5 cm",1],["Le générateur régule la température à 120 °C",1],["Chaque cycle dure 60 secondes",0],["Une sonde à élément de 3 cm existe pour la petite veine saphène",1]],
+  e:"Les cycles durent 20 secondes (120 °C atteint en ≈ 5 s), pas 60."},
+ {th:T.RF, q:"Positionnement et déroulé du traitement par radiofréquence (GVS) :",
+  o:[["Extrémité positionnée à 2 cm de la jonction saphéno-fémorale",1],["À environ 5 mm de l'abouchement de la veine épigastrique",1],["2 cycles à la terminaison puis 1 cycle tous les 6,5 cm",1],["Distance de sécurité de 3 cm en fin de procédure",1],["On poursuit le traitement jusqu'au contact direct de la jonction",0]],
+  e:"On respecte une distance de sécurité de 3 cm en fin de procédure ; on ne traite pas au contact de la jonction."},
+ {th:T.RF, q:"Tumescence et gestes complémentaires en radiofréquence :",
+  o:[["Tumescence à la lidocaïne non adrénalinée, aiguille 22G",1],["Le gainage doit couvrir toute la longueur ET la circonférence de la veine",1],["Distance veine-peau visée ≥ 15 mm",1],["La compression élastique est strictement impérative dans tous les cas",0],["Anticoagulation 7 jours chez les patients à risque thrombo-embolique",1]],
+  e:"La compression n'est pas impérative : elle est recommandée si C3–C6, phlébectomies associées ou grosses varices laissées en place."},
+ {th:T.TTEV, q:"Complications de la mise en place de la sonde (TTEV) :",
+  o:[["Risque infectieux au point de ponction de l'ordre de 0,5 à 5 %",1],["Migration possible du guide d'introducteur",1],["Risque d'occlusion de la veine fémorale commune",1],["Le risque infectieux dépasse habituellement 30 %",0],["Échec de montée possible (fausse route, baïonnette, synéchies, occlusion)",1]],
+  e:"Le risque infectieux est faible (0,5–5 % ; Shepherd 2010, Rasmussen 2011)."},
+ {th:T.TTEV, q:"Anesthésie par tumescence : allergie et surdosage en Xylocaïne :",
+  o:[["L'allergie à la Xylocaïne est rare (<< 1 %)",1],["Penser au surdosage en l'absence de signe cutanéo-muqueux",1],["Le surdosage donne des signes neurologiques et cardiovasculaires immédiats",1],["Ne pas dépasser une dose de 3 mg/kg de Xylocaïne",1],["Le surdosage est totalement bénin (aucun décès rapporté)",0]],
+  e:"Le surdosage est potentiellement grave (≈ 1 % de décès parmi les cas rapportés) ; prévention par dose ≤ 3 mg/kg et tumescence échoguidée."},
+ {th:T.TTEV, q:"Risque thrombotique après TTEV (EHIT, TVP/EP) :",
+  o:[["L'EHIT a une incidence d'environ 1,4 %, le plus souvent bénin",1],["EHIT 1 : surveillance par Doppler itératif jusqu'à J7",1],["EHIT 2-3-4 : anticoagulation jusqu'à résolution",1],["TVP ≈ 0,3 % et EP ≈ 0,1 %",1],["Un diamètre de GVS > 7,5 mm est plutôt protecteur vis-à-vis de la thrombose",0]],
+  e:"Un diamètre de GVS > 7,5 mm est au contraire un facteur de risque thrombotique potentiel (avec CEAP élevée, phlébectomies associées, ATCD de MTEV, D-dimères élevés à CRP normale)."},
+ {th:T.PHLEB, q:"Phlébectomie ambulatoire — principes et indications :",
+  o:[["Technique remise au goût du jour par R. Müller en 1956",1],["Réalisée en ambulatoire sous anesthésie locale",1],["Indiquée pour les varices non saphènes isolées",1],["Peut compléter un traitement de tronc saphène ou s'inscrire dans une stratégie ASVAL",1],["Nécessite systématiquement une anesthésie générale",0]],
+  e:"Le geste est ambulatoire, sous anesthésie locale par tumescence (formule de Klein)."},
+ {th:T.PHLEB, q:"Associer phlébectomies et traitement thermique : arguments :",
+  o:[["Pour : meilleur résultat cosmétique et moindre récidive",1],["Pour : traitement « one shot » et préférence des patients",1],["Contre : risque de traiter par excès des varices pouvant régresser",1],["Contre : allongement du temps opératoire et majoration de la morbidité",1],["La phlébectomie ne se complique jamais de paresthésies ni de lymphocèle",0]],
+  e:"Paresthésies, lymphocèle, ecchymoses, hématomes, pigmentation et matting font partie des complications décrites."}
+];
+
+/* ---------------- QCM RENDER ---------------- */
+const quizEl = document.getElementById('quiz');
+const meterEl = document.getElementById('meter');
+const filtersEl = document.getElementById('filters');
+const banner = document.getElementById('resultBanner');
+const letters = ['A','B','C','D','E','F'];
+let activeFilter = 'Tout';
+const state = quiz.map(()=>({sel:new Set(), graded:false}));
+
+function buildFilters(){
+  const themes = ['Tout', ...Array.from(new Set(quiz.map(q=>q.th)))];
+  filtersEl.innerHTML='';
+  themes.forEach(t=>{
+    const b=document.createElement('button');
+    b.textContent = t==='Tout' ? `Tout (${quiz.length})` : t;
+    b.setAttribute('aria-pressed', t===activeFilter);
+    b.addEventListener('click', ()=>{activeFilter=t; buildFilters(); render();});
+    filtersEl.appendChild(b);
+  });
+}
+
+function render(){
+  quizEl.innerHTML='';
+  quiz.forEach((q,i)=>{
+    if(activeFilter!=='Tout' && q.th!==activeFilter) return;
+    const st = state[i];
+    const card=document.createElement('div');
+    card.className='q'+(st.graded?' graded':'');
+    card.id='q'+i;
+
+    let correctCount=0, allRight=true;
+    q.o.forEach((_,oi)=>{ if(q.o[oi][1]) correctCount++; });
+
+    let optsHtml='';
+    q.o.forEach((opt,oi)=>{
+      const sel = st.sel.has(oi);
+      let cls='opt'+(sel?' sel':'');
+      let verdict='';
+      if(st.graded){
+        const isCorrect = !!opt[1];
+        if(isCorrect && sel){cls='opt correct'; verdict='Bonne réponse';}
+        else if(isCorrect && !sel){cls='opt missed'; verdict='Attendue';}
+        else if(!isCorrect && sel){cls='opt wrong'; verdict='Faux'; allRight=false;}
+        if(isCorrect && !sel) allRight=false;
+      }
+      optsHtml+=`<div class="${cls}" data-q="${i}" data-o="${oi}" role="button" tabindex="0" aria-pressed="${sel}">
+        <span class="box" aria-hidden="true"></span>
+        <span class="letter">${letters[oi]}.</span>
+        <span class="otxt">${opt[0]}</span>
+        ${verdict?`<span class="verdict">${verdict}</span>`:''}
+      </div>`;
+    });
+
+    let explainHtml='';
+    if(st.graded){
+      const good = allRight;
+      explainHtml=`<div class="explain ${good?'good':'bad'}">
+        <span class="tag">${good?'✓ Question réussie':'✕ À revoir'}</span>
+        <p>${q.e}</p>
+      </div>`;
+    }
+
+    card.innerHTML=`
+      <div class="q-top">
+        <span class="q-num">Q${i+1}</span>
+        <span class="q-theme">${q.th}</span>
+      </div>
+      <p class="q-text">${q.q}</p>
+      <div class="opts">${optsHtml}</div>
+      ${explainHtml}`;
+    quizEl.appendChild(card);
+  });
+
+  // wire option clicks
+  quizEl.querySelectorAll('.opt').forEach(el=>{
+    const qi=+el.dataset.q, oi=+el.dataset.o;
+    if(state[qi].graded) return;
+    const toggle=()=>{
+      const s=state[qi].sel;
+      if(s.has(oi)) s.delete(oi); else s.add(oi);
+      render(); updateMeter();
+    };
+    el.addEventListener('click', toggle);
+    el.addEventListener('keydown', e=>{ if(e.key===' '||e.key==='Enter'){e.preventDefault(); toggle();} });
+  });
+  updateMeter();
+}
+
+function updateMeter(){
+  const answered = state.filter(s=>s.sel.size>0).length;
+  meterEl.innerHTML = `Répondu : <b>${answered}</b> / ${quiz.length}`;
+}
+
+function gradeAll(){
+  let correct=0;
+  state.forEach((s,i)=>{
+    s.graded=true;
+    const correctSet=new Set(quiz[i].o.map((o,oi)=>o[1]?oi:-1).filter(x=>x>=0));
+    const ok = s.sel.size===correctSet.size && [...s.sel].every(x=>correctSet.has(x));
+    if(ok) correct++;
+  });
+  render();
+  const total=quiz.length;
+  const pct=Math.round(correct/total*100);
+  document.getElementById('resultBig').textContent=`${correct} / ${total} · ${pct} %`;
+  let msg;
+  if(pct>=85) msg="Excellent — vous maîtrisez le sujet. Relisez juste les items manqués.";
+  else if(pct>=65) msg="Bon niveau. Ciblez les thèmes où vous avez chuté grâce aux explications.";
+  else if(pct>=45) msg="En progression. Reprenez les fiches correspondantes avant de réessayer.";
+  else msg="À retravailler : relisez les fiches puis refaites le QCM.";
+  document.getElementById('resultSub').textContent=msg;
+  banner.classList.add('show');
+  banner.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function resetAll(){
+  state.forEach(s=>{s.sel.clear(); s.graded=false;});
+  banner.classList.remove('show');
+  render();
+  window.scrollTo({top:document.getElementById('view-qcm').offsetTop-60, behavior:'smooth'});
+}
+
+document.getElementById('gradeBtn').addEventListener('click', gradeAll);
+document.getElementById('resetBtn').addEventListener('click', resetAll);
+
+buildFilters();
+render();
+</script>
+</body>
+</html>
